@@ -1,0 +1,42 @@
+#pragma once
+
+
+typedef struct tagInfo
+{
+	float fX;
+	float fY;
+
+	float fCX; //가로길이
+	float fCY; //세로길이
+
+}INFO;
+
+
+typedef	struct tagFrame
+{
+	DIRECTION eDir;
+	DWORD	dwDelay;
+	int iOffsetX;
+	int iOffsetY;
+	float fAngle;
+	int		iFrameStar;
+	int		iFrameStart;		// 프레임 시작 시점
+	int		iFrameEnd;			// 프레임 종료 지점
+	int		iFrameAnimation;	// 재생할 애니메이션 인덱스
+	DWORD	dwSpeed;			// 애니메이션 재생 속도
+	DWORD	dwFrameTime;		// 애니메이션 시작 시간
+	UINT	tRGB;
+	TCHAR* szImgKey;
+
+	//tagFrame() {}
+
+	tagFrame()
+	: eDir(DIR_DOWN), iFrameStart(0), iFrameEnd(0), iFrameAnimation(0), dwSpeed(200), dwFrameTime(0)
+	{}
+
+	tagFrame(DIRECTION Dir, TCHAR* ImgKey, int FrameStart, int FrameEnd, int FrameAnimation, DWORD Speed, DWORD FrameTime)
+	: eDir(Dir), szImgKey(ImgKey), iFrameStart(FrameStart), iFrameEnd(FrameEnd), iFrameAnimation(FrameAnimation), dwSpeed(Speed), dwFrameTime(FrameTime)
+	{}
+	
+	
+}FRAME;

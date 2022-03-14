@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="00. MainGame">
+      <UniqueIdentifier>{2b6e45a5-f87a-436a-8982-29fa3b805ea6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager">
+      <UniqueIdentifier>{a7319781-b94b-4ef5-81f2-65bdf7f02202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Header">
+      <UniqueIdentifier>{5283bc96-d13e-4a3b-9203-47a48b5fe92e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\00. AbstractFactory">
+      <UniqueIdentifier>{829ccc2f-7a58-43b3-8fe0-86ce6ec16c49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object">
+      <UniqueIdentifier>{55d546da-e074-46f5-98bc-9879d5e1e65f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene">
+      <UniqueIdentifier>{4d75865d-67f5-431f-88e0-8662579d7ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\02. SceneMgr">
+      <UniqueIdentifier>{f13dec0c-ef62-48f1-b01a-2a2ca5673a88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\03. BmpMgr">
+      <UniqueIdentifier>{317d6cc4-653d-4ed5-826f-2325b9b59020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\01. ObjMgr">
+      <UniqueIdentifier>{b66ec3ef-8926-48d3-b0d3-48cf287f57d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\03. BmpMgr\MyBmp">
+      <UniqueIdentifier>{6cb244d2-86e3-4f95-a538-39a47f17c2a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\00. Logo">
+      <UniqueIdentifier>{49803f24-f7e8-4e38-9e6b-7261ad983ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\02. Stage01">
+      <UniqueIdentifier>{6d5cd96d-5ba2-4096-88e5-ec3413968ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\09. Button">
+      <UniqueIdentifier>{bf69a876-4a8b-4aa6-9385-486ab0ca4abc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\01. Menu">
+      <UniqueIdentifier>{38e4dfbc-9fc1-4959-888f-578d9f46ffe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\04. ScrollMgr">
+      <UniqueIdentifier>{134ad8a0-be9b-41a1-aae0-11af064f9e28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\00. Soup">
+      <UniqueIdentifier>{b3f2dfc3-5e50-4daa-a1b6-ca2180ffff27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\00. Player">
+      <UniqueIdentifier>{11ec4dc5-ae62-425c-8f8c-355e9f62c487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\05. KeyMgr">
+      <UniqueIdentifier>{fe752423-c569-48a3-878b-25d6ae479f0f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="API-HANI.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>99. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include.h">
+      <Filter>99. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>98. Manager\00. AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>01. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>98. Manager\02. SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>98. Manager\01. ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>99. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>99. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>98. Manager\03. BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBmp.h">
+      <Filter>98. Manager\03. BmpMgr\MyBmp</Filter>
+    </ClInclude>
+    <ClInclude Include="Functor.h">
+      <Filter>99. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>02. Scene\00. Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMenu.h">
+      <Filter>02. Scene\01. Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MyButton.h">
+      <Filter>01. Object\09. Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage01.h">
+      <Filter>02. Scene\02. Stage01</Filter>
+    </ClInclude>
+    <ClInclude Include="CScrollMgr.h">
+      <Filter>98. Manager\04. ScrollMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Soup.h">
+      <Filter>01. Object\00. Soup</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>01. Object\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>98. Manager\05. KeyMgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="API-HANI.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>01. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>98. Manager\02. SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>98. Manager\01. ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>98. Manager\03. BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBmp.cpp">
+      <Filter>98. Manager\03. BmpMgr\MyBmp</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>02. Scene\00. Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMenu.cpp">
+      <Filter>02. Scene\01. Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MyButton.cpp">
+      <Filter>01. Object\09. Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage01.cpp">
+      <Filter>02. Scene\02. Stage01</Filter>
+    </ClCompile>
+    <ClCompile Include="CScrollMgr.cpp">
+      <Filter>98. Manager\04. ScrollMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Soup.cpp">
+      <Filter>01. Object\00. Soup</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>01. Object\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>98. Manager\05. KeyMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="API-HANI.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="API-HANI.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
