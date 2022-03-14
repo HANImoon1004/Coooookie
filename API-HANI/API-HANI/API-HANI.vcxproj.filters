@@ -67,6 +67,9 @@
     <Filter Include="98. Manager\05. KeyMgr">
       <UniqueIdentifier>{fe752423-c569-48a3-878b-25d6ae479f0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="98. Manager\06. CollisionMgr">
+      <UniqueIdentifier>{992caa36-7d80-44e1-a111-75d78d5388fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -147,6 +150,9 @@
     <ClInclude Include="KeyMgr.h">
       <Filter>98. Manager\05. KeyMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>98. Manager\06. CollisionMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -199,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="KeyMgr.cpp">
       <Filter>98. Manager\05. KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>98. Manager\06. CollisionMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

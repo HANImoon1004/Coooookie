@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="00. MainGame">
+      <UniqueIdentifier>{eaf89d79-d378-45b4-a94b-01ef88524983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. KeyMgr">
+      <UniqueIdentifier>{d14d591a-8f5c-4259-b42a-80d38fadb641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. BmpMgr">
+      <UniqueIdentifier>{9f2fd1d1-0fcf-462f-9137-eb8459920f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Header">
+      <UniqueIdentifier>{dfbe1bac-1e4a-4eb3-bd32-e8379093d340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. ScrollMgr">
+      <UniqueIdentifier>{91f307c1-329e-4a5b-a82a-7233a9eac1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{6f906cde-f2df-4e11-91bc-08ba969ead2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\00. Block">
+      <UniqueIdentifier>{b70421e2-da4f-4a81-a0dd-06633e3183ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapMgr">
+      <UniqueIdentifier>{48ca00a0-e16e-4ff7-b4e2-812967c99826}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Functor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>99.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>99.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>99.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include.h">
+      <Filter>99.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>01. KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>02. BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBmp.h">
+      <Filter>02. BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>99.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CScrollMgr.h">
+      <Filter>03. ScrollMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Maps.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Map\00. Block</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="MapMgr.h">
+      <Filter>MapMgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>01. KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBmp.cpp">
+      <Filter>02. BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>02. BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScrollMgr.cpp">
+      <Filter>03. ScrollMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Maps.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Map\00. Block</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="MapMgr.cpp">
+      <Filter>MapMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Editor.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Editor.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

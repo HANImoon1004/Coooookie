@@ -76,8 +76,8 @@ void CStage01::Render(HDC hDC)
 	BitBlt(hDC,
 		iScrollX,
 		iScrollY,
-		1063, //이미지 사이즈 x
-		1131, //이미지 사이즈 y
+		1800, //이미지 사이즈 x
+		600, //이미지 사이즈 y
 		hMemDC,
 		0,
 		0,
