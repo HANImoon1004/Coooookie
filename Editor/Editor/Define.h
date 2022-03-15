@@ -18,4 +18,7 @@
 #define			BLOCK_CX					100
 #define			BLOCK_CY					113
 
+#define			CAT_CX						130  
+#define			CAT_CY						130
+
 extern HWND			g_hWnd

@@ -4,6 +4,7 @@
 #include "KeyMgr.h"
 #include "CScrollMgr.h"
 #include "Block.h"
+#include "Obstacle.h"
 
 CMapMgr*	CMapMgr::m_pInstance = nullptr;
 
@@ -20,10 +21,64 @@ CMapMgr::~CMapMgr()
 
 void CMapMgr::Save_Map()
 {
+	HANDLE hFile = CreateFile(__T("../Data/Map.dat"),
+		GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 
+		FILE_ATTRIBUTE_NORMAL, nullptr);
+	
+	if (INVALID_HANDLE_VALUE == hFile)
+	{
+		MessageBox(nullptr, __T("저장 실패ㅠ_ㅠ"), __T("맵"), MB_OK);
+		return;
+	}
+	DWORD dwByte = 0;
+
+	for (int i = 0; i < MAP_END; ++i)
+	{
+		for (auto& iter : m_listMap[i])
+		{
+			WriteFile(hFile, iter->Get_MapInfo(), sizeof(MAPINFO), &dwByte, nullptr);
+			WriteFile(hFile, iter->Get_INID(), sizeof(int), &dwByte, nullptr); //요기 Q
+		}
+	}
+
+	MessageBox(nullptr, L"맵 저장 성공!", L"*-맵-*", MB_OK);
+	CloseHandle(hFile);
 }
 
 void CMapMgr::Load_Map()
 {
+	HANDLE hFile = CreateFile(__T("../Data/Map.dat"),
+		GENERIC_READ, 0, NULL, OPEN_EXISTING,
+		FILE_ATTRIBUTE_NORMAL, nullptr);
+
+	if (INVALID_HANDLE_VALUE == hFile)
+	{
+		MessageBox(nullptr, __T("로드 실패ㅠ_ㅠ"), __T("맵"), MB_OK);
+		return;
+	}
+	CMaps*	pMap = nullptr;
+	DWORD dwByte = 0;
+	MAPINFO tMapInfo = {};
+	INMAP eINID;
+
+	while (true)
+	{
+		ReadFile(hFile, &tMapInfo, sizeof(MAPINFO), &dwByte, nullptr);
+		ReadFile(hFile, &eINID, sizeof(int), &dwByte, nullptr);
+
+		if (0 == dwByte)
+			break;
+		switch (eINID)
+		{
+		case MAP_BLOCK:
+			pMap = new CBlock(tMapInfo, eINID);
+			m_listMap[MAP_BLOCK].push_back(pMap);
+			break; 
+		}
+	}
+
+	MessageBox(nullptr, L">>ㅑ 로드 성공!", L"*-맵 에디터-*", MB_OK);
+	CloseHandle(hFile);
 }
 
 void CMapMgr::Initialize()
@@ -54,12 +109,25 @@ void CMapMgr::Update()
 		m_iMCY = BLOCK_CY;
 	}
 
+	if (CKeyMgr::Get_Instance()->Key_Down('C'))//블럭
+	{
+		m_eID = MAP_OBSTACLE;
+		m_iMapKey = 1;
+		m_tFrameKey = L"Cat";
+		m_iMCX = CAT_CX;
+		m_iMCY = CAT_CY;
+	}
+
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
 	{
 		switch (m_eID)
 		{
 		case MAP_BLOCK:
 			m_pMap = new CBlock;
+			break;
+
+		case MAP_OBSTACLE:
+			m_pMap = new CObstacle;
 			break;
 		}
 
@@ -69,6 +137,14 @@ void CMapMgr::Update()
 			m_listMap[m_eID].back()->Set_Pos(float(pt.x), float(pt.y));//넣은 애 위치
 		}
 		
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down('S'))
+	{
+		Save_Map();
+	}
+	if (CKeyMgr::Get_Instance()->Key_Down('L'))
+	{
+		Load_Map();
 	}
 }
 
@@ -94,7 +170,7 @@ void CMapMgr::Render(HDC hDC)
 			0, 0,
 			m_iMCX,
 			m_iMCY,
-			RGB(255, 0, 255));
+			ASHBLUE);
 	}
 
 	for (int i = 0; i < MAP_END; ++i)

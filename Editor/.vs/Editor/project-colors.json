@@ -5,7 +5,12 @@
       "ProjectGuid": "6b0c1c42-670b-4357-8e73-6ec3f0f06972",
       "DisplayName": "Editor",
       "ColorIndex": 0
+    },
+    "9ed6bd9d-3130-4fe8-8a03-aa4f0892ccd8": {
+      "ProjectGuid": "9ed6bd9d-3130-4fe8-8a03-aa4f0892ccd8",
+      "DisplayName": "Editor",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

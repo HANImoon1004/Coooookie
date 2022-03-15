@@ -19,6 +19,8 @@ void CMainGame::Initialize()
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map.bmp", L"Back");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map1.bmp", L"Map");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Block.bmp", L"Block");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Cat.bmp", L"Cat");
+
 
 }
 

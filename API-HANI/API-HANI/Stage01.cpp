@@ -22,7 +22,8 @@ void CStage01::Initialize(void)
 {
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map1.bmp", L"Map1");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Player/Player_Run.bmp", L"Player_Run"); //플레이어
-
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Block.bmp", L"Block"); 
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Cat.bmp", L"Cat");
 
 	CObj* pObj = nullptr;
 	
@@ -40,11 +41,11 @@ int CStage01::Update(void)
 	if (GetAsyncKeyState(VK_RIGHT))
 		CScrollMgr::Get_Instance()->Set_ScrollX(-5.f);
 
-	if (GetAsyncKeyState(VK_UP))
-		CScrollMgr::Get_Instance()->Set_ScrollY(5.f);
+	//if (GetAsyncKeyState(VK_UP))
+	//	CScrollMgr::Get_Instance()->Set_ScrollY(5.f);
 
-	if (GetAsyncKeyState(VK_DOWN))
-		CScrollMgr::Get_Instance()->Set_ScrollY(-5.f);
+	//if (GetAsyncKeyState(VK_DOWN))
+	//	CScrollMgr::Get_Instance()->Set_ScrollY(-5.f);
 
 	if (GetAsyncKeyState(VK_LBUTTON))
 	{
@@ -63,18 +64,26 @@ int CStage01::Update(void)
 
 void CStage01::Late_Update(void)
 {
-	//CObjMgr::Get_Instance()->Late_Update(); //위반뜸
+	CObjMgr::Get_Instance()->Late_Update(); //위반뜸
 }
 
 void CStage01::Render(HDC hDC)
 {
 	HDC	hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Map1");//메뉴 배경
 
+	CScrollMgr::Get_Instance()->Set_ScrollX(-SPEED_SCR);
+
 	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
 	int iScrollY = CScrollMgr::Get_Instance()->Get_ScrollY();
 
+	//if(iScrollX <= - 900)
+	//	CScrollMgr::Get_Instance()->Set_ScrollX(900); //이러면 맵이 진행이 안됨
+
+	//if (iScrollX <= -1800)
+	//	iScrollX = 0;
+	
 	BitBlt(hDC,
-		iScrollX,
+		iScrollX ,
 		iScrollY,
 		1800, //이미지 사이즈 x
 		600, //이미지 사이즈 y
@@ -82,6 +91,18 @@ void CStage01::Render(HDC hDC)
 		0,
 		0,
 		SRCCOPY);
+
+	BitBlt(hDC,
+		iScrollX+1800,
+		iScrollY,
+		1800, //이미지 사이즈 x
+		600, //이미지 사이즈 y
+		hMemDC,
+		0,
+		0,
+		SRCCOPY);
+	
+
 
 	CObjMgr::Get_Instance()->Render(hDC);
 

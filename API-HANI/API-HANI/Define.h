@@ -16,4 +16,19 @@
 
 #define			ASHBLUE						RGB(156,175,217)
 
-extern HWND			g_hWnd
+
+#define			PLAYER_CX				200
+#define			PLAYER_CY				200	
+
+#define			BLOCK_CX					100
+#define			BLOCK_CY					113
+
+#define			CAT_CX						130  
+#define			CAT_CY						130
+
+#define			SPEED_SCR				3
+
+#define			KEY_SPACE				0x00100000
+#define			KEY_DOWN					0x00000008
+
+extern HWND			g_hWnd;

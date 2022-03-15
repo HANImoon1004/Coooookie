@@ -2,12 +2,16 @@
 #include "ObjMgr.h"
 
 #include "Obj.h"
-//#include "CollisionMgr.h"
+#include "CollisionMgr.h"
+#include "MapMgr.h"
+#include "Player.h"
 
-CObjMgr*	CObjMgr::m_pInstance = nullptr;
+CObjMgr* CObjMgr::m_pInstance = nullptr;
 
 CObjMgr::CObjMgr()
 {
+	m_MapList[MAP_BLOCK] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_BLOCK);
+	m_MapList[MAP_OBSTACLE] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_OBSTACLE);
 }
 
 
@@ -46,7 +50,7 @@ CObjMgr::~CObjMgr()
 //	return pTarget;
 //}
 //
-void CObjMgr::AddObject(OBJID eID, CObj * pObj)
+void CObjMgr::AddObject(OBJID eID, CObj* pObj)
 {
 	if (eID >= OBJ_END || nullptr == pObj)
 		return;
@@ -58,7 +62,7 @@ int CObjMgr::Update(void)
 {
 	for (int i = 0; i < OBJ_END; ++i)
 	{
-		auto&		iter = m_ObjList[i].begin();
+		auto& iter = m_ObjList[i].begin();
 
 		for (; iter != m_ObjList[i].end(); )
 		{
@@ -79,7 +83,7 @@ int CObjMgr::Update(void)
 
 void CObjMgr::Late_Update(void)
 {
-	for (int i = 0; i < OBJ_END; ++i)
+	/*for (int i = 0; i < OBJ_END; ++i)
 	{
 		for (auto& iter : m_ObjList[i])
 		{
@@ -89,15 +93,29 @@ void CObjMgr::Late_Update(void)
 				break;
 
 			RENDERID eID = iter->Get_GroupID();
-			m_RenderSort[eID].push_back(iter);
+			m_RenderSort[eID].push_back(iter);*/
 
+	for (int i = 0; i < OBJ_END; ++i)
+	{
+		for (int j = 0; j < m_ObjList[i].size(); ++j)
+		{
+			CObj* temp = m_ObjList[i].front() + j;
+			if (temp == nullptr) continue;
+
+			temp->Late_Update();
 		}
 	}
 
-	//CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
-	//CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_PLAYER]);
-	//CCollisionMgr::Collision_Rect(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET]);
-	//CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET]);
+	CollisionMgr::Collision_Block(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]);
+	if (CollisionMgr::Collision_Rect(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]))
+	{
+		dynamic_cast<Player*>(m_ObjList[OBJ_PLAYER].front())->Jump_Stop();
+	}
+
+//CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
+//CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_PLAYER]);
+//CCollisionMgr::Collision_Rect(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET]);
+//CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET]);
 }
 
 void CObjMgr::Render(HDC hDC)

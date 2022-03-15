@@ -70,6 +70,18 @@
     <Filter Include="98. Manager\06. CollisionMgr">
       <UniqueIdentifier>{992caa36-7d80-44e1-a111-75d78d5388fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Object\01. Map">
+      <UniqueIdentifier>{625b9f64-e23e-470f-b093-05f0fff59d35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\01. Map\01. Block">
+      <UniqueIdentifier>{e2175643-d907-4f30-acd5-95675b0ac224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\07. MapMgr">
+      <UniqueIdentifier>{4da0a18d-862f-46cb-8b21-233c8df54a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\01. Map\02. Obstacle">
+      <UniqueIdentifier>{948b17e6-338a-466a-9e16-cd49b5f3dd40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -153,6 +165,18 @@
     <ClInclude Include="CollisionMgr.h">
       <Filter>98. Manager\06. CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Maps.h">
+      <Filter>01. Object\01. Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MapMgr.h">
+      <Filter>98. Manager\07. MapMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>01. Object\01. Map\01. Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>01. Object\01. Map\02. Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -208,6 +232,18 @@
     </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>98. Manager\06. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>01. Object\01. Map\01. Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Maps.cpp">
+      <Filter>01. Object\01. Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MapMgr.cpp">
+      <Filter>98. Manager\07. MapMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>01. Object\01. Map\02. Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,0 @@
-﻿  Stage01.cpp
-C:\Users\re___\OneDrive\바탕 화면\Git\API-HANI\API-HANI\Stage01.cpp(73,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\API-HANI\API-HANI\Stage01.cpp(74,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\API-HANI\API-HANI\Stage01.cpp(106,8): warning C4101: 'str' :참조되지 않은 지역 변수입니다.
-  API-HANI.vcxproj -> C:\Users\re___\OneDrive\바탕 화면\Git\API-HANI\Debug\API-HANI.exe

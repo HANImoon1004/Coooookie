@@ -37,6 +37,9 @@
     <Filter Include="MapMgr">
       <UniqueIdentifier>{48ca00a0-e16e-4ff7-b4e2-812967c99826}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\01. Obstacle">
+      <UniqueIdentifier>{245ab34a-202d-443d-85aa-f2cce519d9a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -49,9 +52,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Editor.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Functor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Struct.h">
@@ -93,6 +93,12 @@
     <ClInclude Include="MapMgr.h">
       <Filter>MapMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Functor.h">
+      <Filter>99.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>Map\01. Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -124,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="MapMgr.cpp">
       <Filter>MapMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Map\01. Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,9 @@
 #include "ObjMgr.h"
 #include "BmpMgr.h"
 #include "SceneMgr.h"
+#include "MapMgr.h"
+#include "CollisionMgr.h"
+#include "KeyMgr.h"
 CMainGame::CMainGame()
 	: m_dwTime(GetTickCount()), m_iFPS(0)
 {
@@ -23,17 +26,22 @@ void CMainGame::Initialize()
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back"); //°£µð 
 	
 	CSceneMgr::Get_Instance()->Set_Scene(SC_LOGO);
+
+	CMapMgr::Get_Instance()->Initialize();
 }
 
 void CMainGame::Update()
 {
+	CKeyMgr::Get_Instance()->Update();
 	CSceneMgr::Get_Instance()->Update();
+	CMapMgr::Get_Instance()->Update();
 
 }
 
 void CMainGame::Late_Update()
 {
 	CSceneMgr::Get_Instance()->Late_Update();
+	
 }
 
 void CMainGame::Render()
@@ -54,13 +62,14 @@ void CMainGame::Render()
 		SRCCOPY);
 
 	CSceneMgr::Get_Instance()->Render(hBackDC);
-
+	CMapMgr::Get_Instance()->Render(hBackDC);
 
 }
 
 void CMainGame::Release()
 {
 	CBmpMgr::Get_Instance()->Destroy_Instance();
+	CMapMgr::Get_Instance()->Destroy_Instance();
 	ReleaseDC(g_hWnd, m_DC);
 
 }

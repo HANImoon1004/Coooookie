@@ -2,6 +2,7 @@
 
 #include "Include.h"
 
+class CMaps;
 class CObj;
 class CObjMgr
 {
@@ -26,6 +27,8 @@ public:
 private:
 	list<CObj*>	m_ObjList[OBJ_END];
 	list<CObj*>	m_RenderSort[RENDER_END];
+
+	list<CMaps*> m_MapList[MAP_END];
 
 public:
 	static	CObjMgr*	Get_Instance()

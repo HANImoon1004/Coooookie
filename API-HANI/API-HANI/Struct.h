@@ -40,3 +40,41 @@ typedef	struct tagFrame
 	
 	
 }FRAME;
+
+
+typedef struct tagMapPos
+{
+	tagMapPos()
+	{
+		ZeroMemory(this, sizeof(tagMapPos));
+	}
+
+	void Set_Position(float _fX, float _fY)
+	{
+		fX = static_cast<int>(_fX / 10) * 10 + iCX / 2.f;
+		fY = static_cast<int>(_fY / 10) * 10 + iCY / 2.f;
+	}
+
+	void Set_PosX(float _fX) { fX += _fX; }
+	void Set_PosY(float _fY) { fY += _fY; }
+
+	float fX;
+	float fY;
+	int		iCX;
+	int		iCY;
+}MAPPOS;
+
+typedef struct tagMap
+{
+	tagMap()
+	{
+		ZeroMemory(this, sizeof(tagMap));
+	}
+	tagMap(int _iCX, int _iCY)
+	{
+		ZeroMemory(this, sizeof(tagMap));
+		tPoint.iCX = _iCX;
+		tPoint.iCY = _iCY;
+	}
+	MAPPOS tPoint;
+}MAPINFO;
