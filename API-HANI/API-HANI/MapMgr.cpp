@@ -96,20 +96,21 @@ void CMapMgr::Load_Map()
 			break;
 		switch (eINID)
 		{
-		case MAP_BLOCK:
+		case BLOCK:
 			pMap = new CBlock(tMapInfo, eINID);
 			m_listMap[MAP_BLOCK].push_back(pMap);
 			break;
 
-		case MAP_OBSTACLE:
+		case OBSTACLE:
 			pMap = new Obstacle(tMapInfo, eINID);
 			m_listMap[MAP_OBSTACLE].push_back(pMap);
 			break;
 
-		case MAP_COIN:
-			pMap = new CCoin;
+		case COIN_SS:
+			pMap = new CCoin(tMapInfo, eINID);
 			m_listMap[MAP_COIN].push_back(pMap);
 			break;
+			\
 
 		}
 	}

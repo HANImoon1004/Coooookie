@@ -73,9 +73,24 @@ void CMapMgr::Load_Map()
 			break;
 		switch (eINID)
 		{
-		case MAP_BLOCK:
+		case BLOCK:
 			pMap = new CBlock(tMapInfo, eINID);
 			m_listMap[MAP_BLOCK].push_back(pMap);
+			break;
+
+		case OBSTACLE:
+			pMap = new CObstacle(tMapInfo, eINID);
+			m_listMap[MAP_OBSTACLE].push_back(pMap);
+			break;
+
+		case OTTE:
+			pMap = new COtte(tMapInfo, eINID);
+			m_listMap[MAP_OBSTACLE].push_back(pMap);
+			break;
+
+		case COIN_SS:
+			pMap = new CCoin(tMapInfo, eINID);
+			m_listMap[MAP_COIN].push_back(pMap);
 			break;
 		}
 	}
@@ -143,6 +158,7 @@ void CMapMgr::Update()
 
 		if (m_eID == MAP_COIN)
 		{
+			m_eID = MAP_COIN;
 			m_tFrameKey = L"SilverCoin";
 			m_iMCX = SCOINS_CX;
 			m_iMCY = SCOINS_CY;
@@ -164,6 +180,7 @@ void CMapMgr::Update()
 
 		if (m_eID == MAP_COIN)
 		{
+			m_eID = MAP_COIN;
 			m_tFrameKey = L"GoldCoin";
 			m_iMCX = GCOINS_CX;
 			m_iMCY = GCOINS_CY;

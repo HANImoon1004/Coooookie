@@ -1,0 +1,6 @@
+﻿  MapMgr.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mapmgr.cpp(112): warning C4244: '-=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mapmgr.cpp(113): warning C4244: '-=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mapmgr.cpp(242): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Editor.vcxproj -> C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\Editor\x64\Debug\Editor.exe
+  Editor.vcxproj -> C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\Editor\x64\Debug\Editor.pdb (Full PDB)
