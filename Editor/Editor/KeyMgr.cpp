@@ -52,10 +52,28 @@ bool CKeyMgr::Key_Up(int _Key)
 // key°ª º¹¿ø
 void CKeyMgr::Update()
 {
-	for (int i = 0; i < VK_MAX; ++i)
-	{
-
-
-
-	}
+	if (GetAsyncKeyState('S') & 0x8000)
+		m_dwKey |= KEY_S;
+	if (GetAsyncKeyState('L') & 0x8000)
+		m_dwKey |= KEY_L;
+	if (GetAsyncKeyState('C') & 0x8000)
+		m_dwKey |= KEY_C;
+	if (GetAsyncKeyState('J') & 0x8000)
+		m_dwKey |= KEY_J;
+	if (GetAsyncKeyState('O') & 0x8000)
+		m_dwKey |= KEY_O;
+	if (GetAsyncKeyState('B') & 0x8000)
+		m_dwKey |= KEY_B;
+	if (GetAsyncKeyState('I') & 0x8000)
+		m_dwKey |= KEY_I;
+	if (GetAsyncKeyState(0x31) & 0x8000)
+		m_dwKey |= KEY_1;
+	if (GetAsyncKeyState(0x32) & 0x8000)
+		m_dwKey |= KEY_2;
+	if (GetAsyncKeyState(0x33) & 0x8000)
+		m_dwKey |= KEY_3;
+	if (GetAsyncKeyState(0x34) & 0x8000)
+		m_dwKey |= KEY_4;
+	if (GetAsyncKeyState(0x35) & 0x8000)
+		m_dwKey |= KEY_5;
 }

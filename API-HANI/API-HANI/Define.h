@@ -26,9 +26,25 @@
 #define			CAT_CX						130  
 #define			CAT_CY						130
 
+#define			SCOINS_CX				48
+#define			SCOINS_CY				48
+
+#define			GCOINS_CX				58
+#define			GCOINS_CY				59
+
+#define			SCOINB_CX				160
+#define			SCOINB_CY				161
+
+#define			GCOINB_CX				161
+#define			GCOINB_CY				161
+
+#define			OTTE_CX					120
+#define			OTTE_CY					230
+
 #define			SPEED_SCR				3
 
 #define			KEY_SPACE				0x00100000
 #define			KEY_DOWN					0x00000008
+
 
 extern HWND			g_hWnd;

@@ -40,6 +40,9 @@
     <Filter Include="Map\01. Obstacle">
       <UniqueIdentifier>{245ab34a-202d-443d-85aa-f2cce519d9a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\02. Jelly Coin">
+      <UniqueIdentifier>{0f4ff934-412a-4862-8686-4eda7d1a36ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -99,6 +102,18 @@
     <ClInclude Include="Obstacle.h">
       <Filter>Map\01. Obstacle</Filter>
     </ClInclude>
+    <ClInclude Include="Jelly.h">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="GCoins.h">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="Otte.h">
+      <Filter>Map\01. Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -132,6 +147,18 @@
       <Filter>MapMgr</Filter>
     </ClCompile>
     <ClCompile Include="Obstacle.cpp">
+      <Filter>Map\01. Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Jelly.cpp">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="GCoins.cpp">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="Otte.cpp">
       <Filter>Map\01. Obstacle</Filter>
     </ClCompile>
   </ItemGroup>

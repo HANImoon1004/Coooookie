@@ -39,5 +39,6 @@ private:
 
 private:
 	bool			m_bKeyState[VK_MAX];
+	DWORD	m_dwKey;
 };
 

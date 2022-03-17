@@ -20,6 +20,12 @@ void CMainGame::Initialize()
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map1.bmp", L"Map");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Block.bmp", L"Block");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Cat.bmp", L"Cat");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/SilverCoin.bmp", L"SilverCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/GoldCoin.bmp", L"GoldCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/BigSilverCoin.bmp", L"BigSilverCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/BigGoldCoin.bmp", L"BigGoldCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Otte.bmp", L"Otte");
+
 
 
 }

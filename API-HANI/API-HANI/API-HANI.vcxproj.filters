@@ -82,6 +82,9 @@
     <Filter Include="01. Object\01. Map\02. Obstacle">
       <UniqueIdentifier>{948b17e6-338a-466a-9e16-cd49b5f3dd40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Object\01. Map\03. Coin">
+      <UniqueIdentifier>{ea03a180-c548-4f90-a9ef-148a5baeadb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -177,6 +180,9 @@
     <ClInclude Include="Obstacle.h">
       <Filter>01. Object\01. Map\02. Obstacle</Filter>
     </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -244,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="Obstacle.cpp">
       <Filter>01. Object\01. Map\02. Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,13 @@ public:
 	virtual ~CBlock();
 
 public:
+	virtual int	 Update() override;
 	virtual void Render(HDC hDC) override;
 	void Release();
+
+public:
+	virtual void Animation_Change() override;
+	virtual void Move_Frame() override;
+
 };
 

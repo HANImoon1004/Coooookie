@@ -2,6 +2,7 @@
 #include "MapMgr.h"
 #include "KeyMgr.h"
 #include "Obstacle.h"
+#include "Coin.h"
 CMapMgr*		CMapMgr::m_pInstance = nullptr;
 
 CMapMgr::CMapMgr()
@@ -25,6 +26,30 @@ void CMapMgr::Update()
 	{
 		Load_Map();
 	}*/
+
+	for (int i = 0; i < MAP_END; ++i)
+	{
+		/*for (int j = 0; j < sizeof(m_listMap[i]); ++j)
+		{
+			m_listMap[i].()->Update();
+		}*/
+		auto& iter = m_listMap[i].begin();
+
+		for (; iter != m_listMap[i].end();) //0316 QUE hani 
+		{
+			int iEvent = (*iter)->Update();
+
+			if (OBJ_DEAD == iEvent)
+			{
+				Safe_Delete<CMaps*>(*iter);
+				iter = m_listMap[i].erase(iter);
+			}
+
+			else
+				++iter;
+		}
+
+	}
 }
 
 void CMapMgr::Render(HDC hDC)
@@ -80,6 +105,12 @@ void CMapMgr::Load_Map()
 			pMap = new Obstacle(tMapInfo, eINID);
 			m_listMap[MAP_OBSTACLE].push_back(pMap);
 			break;
+
+		case MAP_COIN:
+			pMap = new CCoin;
+			m_listMap[MAP_COIN].push_back(pMap);
+			break;
+
 		}
 	}
 

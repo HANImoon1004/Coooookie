@@ -24,6 +24,11 @@ void CStage01::Initialize(void)
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Player/Player_Run.bmp", L"Player_Run"); //플레이어
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Block.bmp", L"Block"); 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Cat.bmp", L"Cat");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/SilverCoin.bmp", L"SilverCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/GoldCoin.bmp", L"GoldCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/BigSilverCoin.bmp", L"BigSilverCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/BigGoldCoin.bmp", L"BigGoldCoin");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Otte.bmp", L"Otte");
 
 	CObj* pObj = nullptr;
 	

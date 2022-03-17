@@ -33,10 +33,26 @@ void CBlock::Render(HDC hDC)
 		0, 0,
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
-		RGB(255, 0, 255));
+		ASHBLUE);
 
 }
 
 void CBlock::Release()
 {
+}
+
+void CBlock::Animation_Change()
+{
+}
+
+void CBlock::Move_Frame()
+{
+}
+
+int CBlock::Update()
+{
+	Move_Frame();
+	Animation_Change();
+
+	return OBJ_NOEVENT;
 }

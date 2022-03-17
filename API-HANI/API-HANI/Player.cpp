@@ -101,12 +101,12 @@ void Player::Key_Input()
 
 void Player::Key_Check()
 {
-	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_DOWN))
+	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_DOWN))
 	{
 		m_eNextState = PLAYER_SLIDE;
 	}
 
-	if (CKeyMgr::Get_Instance()->Key_Up(KEY_DOWN))
+	if (CKeyMgr::Get_Instance()->Key_Up(VK_DOWN))
 	{
 		m_eNextState = PLAYER_RUN;
 	}
@@ -187,7 +187,7 @@ bool Player::Jump(void)
 	{
 
 		m_tInfo.fY -= m_fJumpPower * m_fJumpTime - (9.8f * m_fJumpTime * m_fJumpTime) * 0.5f;
-		m_fJumpTime += 0.2f;
+		m_fJumpTime += 0.2f; //점프 나중에 하고 0316
 
 	}
 
@@ -252,7 +252,7 @@ void Player::Animation_Change()
 		case PLAYER_SLIDE:
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 1;
-			m_tFrame.iFrameAnimation = 3;
+			m_tFrame.iFrameAnimation = 4;
 			m_tFrame.dwSpeed = 100;
 			break;
 

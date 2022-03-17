@@ -1,0 +1,32 @@
+﻿  Otte.cpp
+c:\users\하니\desktop\git\editor\editor\otte.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\하니\desktop\git\editor\editor\otte.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MapMgr.cpp
+c:\users\하니\desktop\git\editor\editor\mapmgr.cpp(97): warning C4244: '-=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\하니\desktop\git\editor\editor\mapmgr.cpp(98): warning C4244: '-=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\하니\desktop\git\editor\editor\mapmgr.cpp(225): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainGame.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Obstacle.cpp
+c:\users\하니\desktop\git\editor\editor\obstacle.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\하니\desktop\git\editor\editor\obstacle.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MyBmp.cpp
+  Maps.cpp
+  KeyMgr.cpp
+  Jelly.cpp
+  GCoins.cpp
+c:\users\하니\desktop\git\editor\editor\gcoins.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\하니\desktop\git\editor\editor\gcoins.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Editor.cpp
+  CScrollMgr.cpp
+  Coin.cpp
+c:\users\하니\desktop\git\editor\editor\coin.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\하니\desktop\git\editor\editor\coin.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  BmpMgr.cpp
+  Block.cpp
+c:\users\하니\desktop\git\editor\editor\block.cpp(27): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\하니\desktop\git\editor\editor\block.cpp(36): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  Editor.vcxproj -> C:\Users\하니\Desktop\Git\Editor\Debug\Editor.exe
+  Editor.vcxproj -> C:\Users\하니\Desktop\Git\Editor\Debug\Editor.pdb (Full PDB)
