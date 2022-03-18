@@ -67,6 +67,8 @@ void Player::Late_Update(void)
 void Player::Render(HDC hDC)
 {
 	HDC	hMemDC = CBmpMgr::Get_Instance()->Find_Image(m_pFrameKey);
+	
+	Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
 
 	GdiTransparentBlt(hDC,
 		m_tRect.left,//복사 받을 위치 좌표
@@ -129,8 +131,8 @@ void Player::Update_Rect()
 	case PLAYER_SLIDE:
 		m_tRect.left = m_tInfo.fX - (200 >> 1);
 		m_tRect.right = m_tInfo.fX + (200 >> 1);
-		m_tRect.top = m_tInfo.fY - (190 >> 2);
-		m_tRect.bottom = m_tInfo.fY + (190 >> 2);
+		m_tRect.top = m_tInfo.fY - (190 >> 3);
+		m_tRect.bottom = m_tInfo.fY + (190 >> 1);
 		break;
 
 	default:
@@ -175,8 +177,8 @@ bool Player::Jump(void)
 
 	if (m_bDoJump) // 더블점프
 	{
-		m_tInfo.fY -= m_fJumpPower * m_fJumpTime - (9.8f * m_fJumpTime * m_fJumpTime) * 0.5f;
-		m_fJumpTime += 0.2f; //좀만 천천히 떨어지게 못하나? hani...
+		m_tInfo.fY -= m_fJumpPower * m_fJumpTime - (7.8f * m_fJumpTime * m_fJumpTime) * 0.5f;
+		m_fJumpTime += 0.2f; //좀만 천천히 떨어지게 못하나? hani... wndfurrkthreh wnfdu
 	}
 
 	
@@ -186,14 +188,14 @@ bool Player::Jump(void)
 	else if (m_bJump) // 일단점프
 	{
 
-		m_tInfo.fY -= m_fJumpPower * m_fJumpTime - (9.8f * m_fJumpTime * m_fJumpTime) * 0.5f;
+ 		m_tInfo.fY -= m_fJumpPower * m_fJumpTime - (7.8f * m_fJumpTime * m_fJumpTime) * 0.5f;
 		m_fJumpTime += 0.2f; //점프 나중에 하고 0316
 
 	}
 
-	else
+	/*else
 		m_tInfo.fY = WINCY - 113 - m_tInfo.fCY * 0.5;
-
+*/
 	
 
 	if (m_bJump)
@@ -209,8 +211,8 @@ void Player::Jump_Stop()
 	
 	if (m_bJump)
 	{
-		if ((WINCY - 113 - m_tInfo.fCY * 0.5) < m_tInfo.fY)
-			m_tInfo.fY = WINCY - 113 - m_tInfo.fCY * 0.5;
+		/*if ((WINCY - 113 - m_tInfo.fCY * 0.5) < m_tInfo.fY)
+			m_tInfo.fY = WINCY - 113 - m_tInfo.fCY * 0.5;*/
 		m_bJump = false;
 		m_bDoJump = false;
 		m_dwTime = GetTickCount();

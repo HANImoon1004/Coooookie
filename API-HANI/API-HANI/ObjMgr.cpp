@@ -6,12 +6,15 @@
 #include "MapMgr.h"
 #include "Player.h"
 
+#include "Coin.h"
 CObjMgr* CObjMgr::m_pInstance = nullptr;
 
 CObjMgr::CObjMgr()
 {
 	m_MapList[MAP_BLOCK] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_BLOCK);
 	m_MapList[MAP_OBSTACLE] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_OBSTACLE);
+	m_MapList[MAP_COIN] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_COIN);
+
 }
 
 
@@ -111,6 +114,29 @@ void CObjMgr::Late_Update(void)
 	{
 		dynamic_cast<Player*>(m_ObjList[OBJ_PLAYER].front())->Jump_Stop();
 	}
+	if(CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+	{
+
+		m_MapList[MAP_COIN].front()->Set_Dead(); //0317
+
+	
+	}//collision_block jal daem. 
+
+	/*list<CMaps*>::iterator iter;
+
+	for (iter = m_MapList[MAP_COIN].begin(); iter != m_MapList[MAP_COIN].end(); ++iter)
+	{
+		if (CollisionMgr::Collision_Map(iter, m_ObjList[OBJ_PLAYER]))
+
+	}
+	for (auto& iter : m_MapList[MAP_COIN])
+	{
+		if (CollisionMgr::Collision_Map(iter, m_ObjList[OBJ_PLAYER]))
+
+	}*/
+
+	//for_each(auto& iter : m_MapList[MAP_COIN])
+	//for_each(auto& iter = m_MapList[MAP_COIN].begin(), m_MapList[MAP_COIN].end(), )
 
 //CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
 //CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_PLAYER]);

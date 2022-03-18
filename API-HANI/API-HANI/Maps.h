@@ -19,7 +19,9 @@ public:
 	void					Set_Pos(const float fX, const float fY) { m_tInfo.tPoint.Set_Position(fX, fY); }
 	void					Set_PosX(const float fX) { m_tInfo.tPoint.Set_PosX(fX); }
 	void					Set_PosY(const float fY) { m_tInfo.tPoint.Set_PosY(fY); }
+	void					Set_Dead() { m_bDead = true; }
 
+	void					Update_Rect();
 	virtual void			Move_Frame() PURE;
 	virtual void			Animation_Change() PURE;
 

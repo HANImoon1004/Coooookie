@@ -29,6 +29,8 @@ void Obstacle::Render(HDC hDC)
 {
 	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Cat");
 
+	Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
+
 	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
 	GdiTransparentBlt(hDC, m_tInfo.tPoint.fX - m_tInfo.tPoint.iCX / 2.f + iScrollX, //Q
 		m_tInfo.tPoint.fY - m_tInfo.tPoint.iCY / 2.f,
@@ -69,7 +71,7 @@ void Obstacle::Move_Frame()
 int Obstacle::Update()
 {
 	Move_Frame();
-
+	Update_Rect();
 	return OBJ_NOEVENT;
 }
 

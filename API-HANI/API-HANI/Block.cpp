@@ -23,9 +23,11 @@ CBlock::~CBlock()
 void CBlock::Render(HDC hDC)
 {
 	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Block");
+	//Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
 
 	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
-	GdiTransparentBlt(hDC, m_tInfo.tPoint.fX - m_tInfo.tPoint.iCX / 2.f + iScrollX, //Q
+	GdiTransparentBlt(hDC, m_tInfo.tPoint.fX - m_tInfo.tPoint.iCX / 2.f + iScrollX,
+		//Que hani 
 		m_tInfo.tPoint.fY - m_tInfo.tPoint.iCY / 2.f,
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
@@ -53,6 +55,6 @@ int CBlock::Update()
 {
 	Move_Frame();
 	Animation_Change();
-
+	//Update_Rect();
 	return OBJ_NOEVENT;
 }

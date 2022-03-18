@@ -41,6 +41,8 @@ void CMapMgr::Update()
 
 			if (OBJ_DEAD == iEvent)
 			{
+				MessageBox(nullptr, L">>ㅑ 로드 성공!", L"*-맵 에디터-*", MB_OK);
+
 				Safe_Delete<CMaps*>(*iter);
 				iter = m_listMap[i].erase(iter);
 			}
@@ -110,7 +112,7 @@ void CMapMgr::Load_Map()
 			pMap = new CCoin(tMapInfo, eINID);
 			m_listMap[MAP_COIN].push_back(pMap);
 			break;
-			\
+			
 
 		}
 	}

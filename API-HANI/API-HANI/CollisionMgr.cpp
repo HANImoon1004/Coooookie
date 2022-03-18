@@ -138,6 +138,30 @@ bool CollisionMgr::Collision_Block(list<CMaps*> Dest, list<CObj*> Sour)
 	return isColl;
 }
 
+bool CollisionMgr::Collision_Map(list<CMaps*> Dest, list<CObj*> Sour)
+{
+
+	RECT rc{};
+	bool   isColl = true;
+
+	for (auto& DestIter : Dest)
+	{
+		for (auto& SourIter : Sour)
+		{
+			if (IntersectRect(&rc, &(DestIter->Get_Rect()), &(SourIter->Get_Rect())))
+			{
+				isColl = true;
+				//DestIter->Set_PosY(-(rc.bottom - rc.top));
+			}/*
+
+			else
+				isColl = false;*/
+		}
+	}
+	return isColl;
+
+}
+
 bool CollisionMgr::Check_Sphere(const CObj * pDstObject, const CObj * rSrcObject)
 {
 	float fRadiusSum = static_cast<float>((int(pDstObject->Get_Info().fCX) >> 1) + (int(rSrcObject->Get_Info().fCY) >> 1));
