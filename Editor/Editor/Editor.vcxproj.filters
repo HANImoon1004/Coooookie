@@ -43,6 +43,15 @@
     <Filter Include="Map\02. Jelly Coin">
       <UniqueIdentifier>{0f4ff934-412a-4862-8686-4eda7d1a36ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\03. Item">
+      <UniqueIdentifier>{c5ced06b-30fb-41f1-b087-54e674471e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. CollisionMgr">
+      <UniqueIdentifier>{3e84a3f6-1688-4a7c-9f0d-fb87cdd0f8cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. CollisionMgr\05. MouseMgr">
+      <UniqueIdentifier>{ba0dcc30-57cd-4ad2-a295-8bc64d0adc57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -114,6 +123,27 @@
     <ClInclude Include="Otte.h">
       <Filter>Map\01. Obstacle</Filter>
     </ClInclude>
+    <ClInclude Include="BigSVcoin.h">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="BigGDcoin.h">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="Booster.h">
+      <Filter>Map\03. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Big.h">
+      <Filter>Map\03. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Magnet.h">
+      <Filter>Map\03. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>04. CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>04. CollisionMgr\05. MouseMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -160,6 +190,27 @@
     </ClCompile>
     <ClCompile Include="Otte.cpp">
       <Filter>Map\01. Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="BigSVcoin.cpp">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="BigGDcoin.cpp">
+      <Filter>Map\02. Jelly Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="Booster.cpp">
+      <Filter>Map\03. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Big.cpp">
+      <Filter>Map\03. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Magnet.cpp">
+      <Filter>Map\03. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>04. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>04. CollisionMgr\05. MouseMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

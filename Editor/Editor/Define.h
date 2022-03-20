@@ -15,6 +15,8 @@
 #define			CENTERED(fCX)		(WINCX - FCX)*0.5
 
 #define			ASHBLUE						RGB(156,175,217)
+#define			WHITE							RGB(255, 255, 255)
+
 #define			BLOCK_CX					100
 #define			BLOCK_CY					113
 
@@ -35,6 +37,20 @@
 
 #define			OTTE_CX					120
 #define			OTTE_CY					230
+
+#define			JELLY_CX					70
+#define			JELLY_CY					61
+
+#define			BOOSTER_CX				90
+#define			BOOSTER_CY				90
+
+#define			BIG_CX							90
+#define			BIG_CY							90
+
+#define			MAGNET_CX					90
+#define			MAGNET_CY					90
+
+
 
 
 extern HWND			g_hWnd

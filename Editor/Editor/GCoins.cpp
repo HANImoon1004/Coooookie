@@ -34,3 +34,12 @@ void CGCoins::Render(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		ASHBLUE);
 }
+
+int CGCoins::Update()
+{
+	if (m_bDead)
+		return MAP_DEAD;
+
+	Update_Rect();
+	return MAP_NOEVENT;
+}

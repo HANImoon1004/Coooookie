@@ -7,14 +7,24 @@
 #include "Player.h"
 
 #include "Coin.h"
+#include "SoundMgr.h"
+#include "SceneMgr.h"
+
 CObjMgr* CObjMgr::m_pInstance = nullptr;
 
 CObjMgr::CObjMgr()
 {
-	m_MapList[MAP_BLOCK] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_BLOCK);
-	m_MapList[MAP_OBSTACLE] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_OBSTACLE);
-	m_MapList[MAP_COIN] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_COIN);
 
+		m_MapList[MAP_BLOCK] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_BLOCK);
+		m_MapList[MAP_OBSTACLE] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_OBSTACLE);
+		m_MapList[MAP_COIN] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_COIN);
+		m_MapList[MAP_JELLY] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_JELLY);
+		m_MapList[MAP_ITEM] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_ITEM);
+
+		CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+
+	
+	
 }
 
 
@@ -81,23 +91,16 @@ int CObjMgr::Update(void)
 		}
 	}
 
+	//if (dynamic_cast<Player*>(CObjMgr::Get_Instance()->Get_Player())->Get_Dead())
+	//{
+	//	//죽었으면... 팝업창
+	//}
+
 	return 0;
 }
 
 void CObjMgr::Late_Update(void)
 {
-	/*for (int i = 0; i < OBJ_END; ++i)
-	{
-		for (auto& iter : m_ObjList[i])
-		{
-			iter->Late_Update();
-
-			if (m_ObjList[i].empty())
-				break;
-
-			RENDERID eID = iter->Get_GroupID();
-			m_RenderSort[eID].push_back(iter);*/
-
 	for (int i = 0; i < OBJ_END; ++i)
 	{
 		for (int j = 0; j < m_ObjList[i].size(); ++j)
@@ -108,40 +111,28 @@ void CObjMgr::Late_Update(void)
 			temp->Late_Update();
 		}
 	}
-
+	//충돌처리
 	CollisionMgr::Collision_Block(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]);
 	if (CollisionMgr::Collision_Rect(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]))
 	{
-		dynamic_cast<Player*>(m_ObjList[OBJ_PLAYER].front())->Jump_Stop();
+ 		dynamic_cast<Player*>(m_ObjList[OBJ_PLAYER].front())->Jump_Stop();
 	}
-	if(CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
-	{
+	//if(CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+	//{
 
-		m_MapList[MAP_COIN].front()->Set_Dead(); //0317
+	//	m_MapList[MAP_COIN].front()->Set_Dead(); //0317
 
+	//
+	//}//collision_block jal daem.  이러면 맨 앞의 하나만 사라진다.
+
+	CollisionMgr::Collision_Item(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]);
+	if(true == CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
 	
-	}//collision_block jal daem. 
+	CollisionMgr::Collision_Item(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
+	CollisionMgr::Collision_Item(m_MapList[MAP_ITEM], m_ObjList[OBJ_PLAYER]);
+	CollisionMgr::Collision_Item(m_MapList[MAP_JELLY], m_ObjList[OBJ_PLAYER]);
 
-	/*list<CMaps*>::iterator iter;
-
-	for (iter = m_MapList[MAP_COIN].begin(); iter != m_MapList[MAP_COIN].end(); ++iter)
-	{
-		if (CollisionMgr::Collision_Map(iter, m_ObjList[OBJ_PLAYER]))
-
-	}
-	for (auto& iter : m_MapList[MAP_COIN])
-	{
-		if (CollisionMgr::Collision_Map(iter, m_ObjList[OBJ_PLAYER]))
-
-	}*/
-
-	//for_each(auto& iter : m_MapList[MAP_COIN])
-	//for_each(auto& iter = m_MapList[MAP_COIN].begin(), m_MapList[MAP_COIN].end(), )
-
-//CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
-//CCollisionMgr::Collision_RectEx(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_PLAYER]);
-//CCollisionMgr::Collision_Rect(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET]);
-//CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET]);
 }
 
 void CObjMgr::Render(HDC hDC)

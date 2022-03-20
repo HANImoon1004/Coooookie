@@ -1,12 +1,12 @@
 #pragma once
 #include "Maps.h"
-class CCoin :
+class Coin :
 	public CMaps
 {
 public:
-	CCoin();
-	explicit CCoin(MAPINFO& mapInfo, INMAP eINID);
-	virtual ~CCoin();
+	Coin();
+	explicit Coin(MAPINFO& mapInfo, INMAP eINID);
+	virtual ~Coin();
 
 public:
 	virtual void Move_Frame() override;

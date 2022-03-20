@@ -3,6 +3,7 @@
 #include "BmpMgr.h"
 #include "KeyMgr.h"
 #include "MapMgr.h"
+#include "Mouse.h"
 CMainGame::CMainGame()
 {
 	m_hDC = GetDC(g_hWnd);
@@ -25,6 +26,11 @@ void CMainGame::Initialize()
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/BigSilverCoin.bmp", L"BigSilverCoin");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/BigGoldCoin.bmp", L"BigGoldCoin");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Otte.bmp", L"Otte");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Jelly.bmp", L"Jelly");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Booster.bmp", L"Booster");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Big.bmp", L"Big");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Magnet.bmp", L"Magnet");
+
 
 
 
@@ -34,6 +40,7 @@ void CMainGame::Update()
 {
 	CKeyMgr::Get_Instance()->Update();
 	CMapMgr::Get_Instance()->Update();
+	CMouse::Get_Instance()->Update();
 }
 
 void CMainGame::Render()
@@ -47,6 +54,7 @@ void CMainGame::Render()
 	BitBlt(hBackDC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
 
 	CMapMgr::Get_Instance()->Render(m_hDC);
+	CMouse::Get_Instance()->Render(m_hDC);
 
 }
 

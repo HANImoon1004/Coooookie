@@ -10,6 +10,7 @@ CScrollMgr::CScrollMgr()
 	m_fScrollLockY = WINCY;
 	m_iX = 0;
 	m_iY = 0;
+	
 }
 
 

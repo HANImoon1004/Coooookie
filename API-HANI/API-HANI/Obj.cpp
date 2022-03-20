@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Obj.h"
+#include "ObjMgr.h"
 
+float CObj::g_fSound = 0.5f;
 
 CObj::CObj()
 	: m_fSpeed(0.f), m_bDead(false), m_fAngle(0.f), m_fDiagonal(0.f)

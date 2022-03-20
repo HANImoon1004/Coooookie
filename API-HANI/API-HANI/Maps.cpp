@@ -8,11 +8,31 @@ CMaps::CMaps()
 CMaps::CMaps(MAPINFO & mapInfo, INMAP eINID)
 	: m_tInfo(mapInfo), m_eINID(eINID)
 {
+	m_bDead = false;
 }
 
 
 CMaps::~CMaps()
 {
+}
+
+int CMaps::Update_()
+{
+	if (m_bDead)
+		return OBJ_DEAD;
+
+	if (m_dwTime + 10 < GetTickCount())
+	{
+		m_fSpeed -= m_fScroll;
+	}
+
+	return OBJ_NOEVENT;
+}
+
+void CMaps::Late_Update()
+{
+	if (m_tRect.right + m_fSpeed <= 0)
+		m_bDead = true;
 }
 
 void CMaps::Update_Rect()

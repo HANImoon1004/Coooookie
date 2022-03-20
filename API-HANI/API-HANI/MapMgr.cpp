@@ -3,7 +3,15 @@
 #include "KeyMgr.h"
 #include "Obstacle.h"
 #include "Coin.h"
-CMapMgr*		CMapMgr::m_pInstance = nullptr;
+#include "BCoin.h"
+#include "GCoin.h"
+#include "BGCoin.h"
+#include "Jelly.h"
+#include "Booster.h"
+#include "Big.h"
+#include "Magnet.h"
+
+CMapMgr* CMapMgr::m_pInstance = nullptr;
 
 CMapMgr::CMapMgr()
 {
@@ -41,8 +49,6 @@ void CMapMgr::Update()
 
 			if (OBJ_DEAD == iEvent)
 			{
-				MessageBox(nullptr, L">>ㅑ 로드 성공!", L"*-맵 에디터-*", MB_OK);
-
 				Safe_Delete<CMaps*>(*iter);
 				iter = m_listMap[i].erase(iter);
 			}
@@ -84,7 +90,7 @@ void CMapMgr::Load_Map()
 		MessageBox(nullptr, __T("로드 실패ㅠ_ㅠ"), __T("맵"), MB_OK);
 		return;
 	}
-	CMaps*	pMap = nullptr;
+	CMaps* pMap = nullptr;
 	DWORD dwByte = 0;
 	MAPINFO tMapInfo = {};
 	INMAP eINID;
@@ -109,14 +115,47 @@ void CMapMgr::Load_Map()
 			break;
 
 		case COIN_SS:
-			pMap = new CCoin(tMapInfo, eINID);
+			pMap = new Coin(tMapInfo, eINID);
 			m_listMap[MAP_COIN].push_back(pMap);
 			break;
-			
 
+		case COIN_SB:
+			pMap = new BCoin(tMapInfo, eINID);
+			m_listMap[MAP_COIN].push_back(pMap);
+			break;
+
+		case  COIN_GS:
+			pMap = new CGCoin(tMapInfo, eINID);
+			m_listMap[MAP_COIN].push_back(pMap);
+			break;
+
+		case COIN_GB:
+			pMap = new BGCoin(tMapInfo, eINID);
+			m_listMap[MAP_COIN].push_back(pMap);
+			break;
+
+		case JELLY:
+			pMap = new Jelly(tMapInfo, eINID);
+			m_listMap[MAP_JELLY].push_back(pMap);
+			break;
+
+		case BOOSTER:
+			pMap = new Booster(tMapInfo, eINID);
+			m_listMap[MAP_ITEM].push_back(pMap);
+			break;
+
+		case  BIG:
+			pMap = new Big(tMapInfo, eINID);
+			m_listMap[MAP_ITEM].push_back(pMap);
+			break;
+
+		case MAGNET:
+			pMap = new Magnet(tMapInfo, eINID);
+			m_listMap[MAP_ITEM].push_back(pMap);
+			break;
 		}
 	}
 
-	MessageBox(nullptr, L">>ㅑ 로드 성공!", L"*-맵 에디터-*", MB_OK);
+//	MessageBox(nullptr, L">>ㅑ 로드 성공!", L"*-클라이언트-*", MB_OK);
 	CloseHandle(hFile);
 }

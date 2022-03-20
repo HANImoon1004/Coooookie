@@ -14,6 +14,7 @@ public:
     void Release();
 
 public:
+    void        Update_Rect() override;
 	void		Animation_Change();
 
 	virtual void Move_Frame() override;

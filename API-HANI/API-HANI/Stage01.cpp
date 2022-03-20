@@ -6,6 +6,8 @@
 #include "AbstractFactory.h"
 #include "Soup.h"
 #include "Player.h"
+#include "Pet.h"
+#include "MapMgr.h"
 
 //#define MAX_COMPUTERNAME_LENGTH 31
 
@@ -16,6 +18,7 @@ CStage01::CStage01()
 
 CStage01::~CStage01()
 {
+	Release();
 }
 
 void CStage01::Initialize(void)
@@ -29,17 +32,37 @@ void CStage01::Initialize(void)
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/BigSilverCoin.bmp", L"BigSilverCoin");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/BigGoldCoin.bmp", L"BigGoldCoin");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Otte.bmp", L"Otte");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Jelly.bmp", L"Jelly");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Booster.bmp", L"Booster");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Big.bmp", L"Big");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Magnet.bmp", L"Magnet");
+
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Player/Gaeguri.bmp", L"Gaeguri");
+
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/UI/HPback.bmp", L"HPback");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/UI/HPbar.bmp", L"HPbar");
+
 
 	CObj* pObj = nullptr;
 	
 	pObj = CAbstractFactory<Player>::Create();
 	CObjMgr::Get_Instance()->AddObject(OBJ_PLAYER, pObj);
 
-	
+	pObj = CAbstractFactory<CPet>::Create();
+	CObjMgr::Get_Instance()->AddObject(OBJ_PET, pObj);
+
+	CMapMgr::Get_Instance()->Initialize();
+
+	m_dwTime = GetTickCount();
+
 }
 
 int CStage01::Update(void)
 {
+	CMapMgr::Get_Instance()->Update();
+
+	CScrollMgr::Get_Instance()->Set_ScrollX(-m_fScroll);
+
 	if (GetAsyncKeyState(VK_LEFT))
 		CScrollMgr::Get_Instance()->Set_ScrollX(5.f);
 
@@ -70,13 +93,14 @@ int CStage01::Update(void)
 void CStage01::Late_Update(void)
 {
 	CObjMgr::Get_Instance()->Late_Update(); //위반뜸
+
+
 }
 
 void CStage01::Render(HDC hDC)
 {
 	HDC	hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Map1");//메뉴 배경
 
-	CScrollMgr::Get_Instance()->Set_ScrollX(-SPEED_SCR);
 
 	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
 	int iScrollY = CScrollMgr::Get_Instance()->Get_ScrollY();
@@ -88,7 +112,7 @@ void CStage01::Render(HDC hDC)
 	//	iScrollX = 0;
 	
 	BitBlt(hDC,
-		iScrollX ,
+		iScrollX % 900 ,
 		iScrollY,
 		1800, //이미지 사이즈 x
 		600, //이미지 사이즈 y
@@ -97,56 +121,58 @@ void CStage01::Render(HDC hDC)
 		0,
 		SRCCOPY);
 
-	BitBlt(hDC,
-		iScrollX+1800,
-		iScrollY,
-		1800, //이미지 사이즈 x
-		600, //이미지 사이즈 y
-		hMemDC,
-		0,
-		0,
-		SRCCOPY);
+	CMapMgr::Get_Instance()->Render(hDC);
+
+	int iHp = dynamic_cast<Player*>(CObjMgr::Get_Instance()->Get_Player())->Get_Hp();
+
+	hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"HPback");
 	
+	GdiTransparentBlt(hDC,
+		WINCX*0.2, 30,
+		500, 51,	hMemDC,
+		0, 0,	500,  51, ASHBLUE); 
+	
+	//GdiTransparentBlt(hDC,
+	//		int(m_tInfo.fX - m_tInfo.fCX * 0.5),//복사 받을 위치 좌표
+	//		int(m_tInfo.fY - m_tInfo.fCY * 0.5),
+	//		m_tInfo.fCX, //복사 받을 가로 길이
+	//		m_tInfo.fCY,
+	//		hMemDC,
+	//		int(m_tInfo.fCX) * m_tFrame.iFrameStart, //비트맵의 시작 좌표값 출력 시작 지점
+	//		int(m_tInfo.fCY) * m_tFrame.iFrameAnimation, //비트맵의 시작 좌표값 출력 시작 지점,
+	//		m_tInfo.fCX, //복사 할 비트맵 가로 길이
+	//		m_tInfo.fCY,
+	//		ASHBLUE);
+
+	hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"HPbar");
+
+	GdiTransparentBlt(hDC,
+		WINCX * 0.2, 30,
+		iHp, 51, hMemDC,
+		0, 0, iHp, 51, ASHBLUE); //hp가 180이 되면 죽어야함
 
 
 	CObjMgr::Get_Instance()->Render(hDC);
 
-	AddFontResourceA("../Font/PF스타더스트.ttf");
+	int iMoney = dynamic_cast<Player*>(CObjMgr::Get_Instance()->Get_Player())->Get_Money();
+	int iScore = dynamic_cast<Player*>(CObjMgr::Get_Instance()->Get_Player())->Get_Score();
 
-	SetBkMode(hDC, 1);
-	SetTextColor(hDC, RGB(255, 255, 255));
-	HFONT hFont, oldFont;
-	hFont = CreateFont(20, //높이
-		0, 0, 0, 0, 0, 0, 0, 
-		HANGUL_CHARSET, 0, 0, 0, 
-		VARIABLE_PITCH || FF_ROMAN, 
-		TEXT("PF스타더스트")); //폰트
+	TCHAR szMoney[32];
+	TCHAR szScore[32];
+	TCHAR szHp[32];
 
-	oldFont = (HFONT)SelectObject(hDC, hFont);
-	TextOut(hDC, 300, 600, L"안녕!", lstrlen(L"안녕"));
+	wsprintf(szMoney, L"가진 돈 : %i", iMoney);
+	wsprintf(szScore, L"점수 : %i", iScore);
+	wsprintf(szHp, L"체력 : %i", iHp);
 
-	TextOut(hDC, 300, 300, L"안녕", lstrlen(L"안녕"));
-
-	TCHAR szComName[255]; //hani 컴퓨터, 유저 이름
-	TCHAR szUserName[255];
-	TCHAR str[255];
-	DWORD len;
-	HDC hdc;
-	PAINTSTRUCT ps;
-	hdc = BeginPaint(g_hWnd, &ps);
-	len = 255;
-	GetComputerName(szComName, &len);
-	len = 255;
-	GetUserName(szUserName, &len);
-
-	TextOut(hDC, 300, 300, szComName, lstrlen(szComName)); //단순히 지영하니 뜸
-	wsprintf(szComName, L"%s 안녕!", szComName); //세번째 인수는 %s, 2인자를 1인자에 복사해주는 것 같다
-	TextOut(hDC, 300, 400, szComName, lstrlen(szComName)); //지영하니 안녕!
-	TextOut(hDC, 300, 500, L"1. 일하기  2. 일하기", lstrlen(L"1. 일하기  2. 일하기"));
+	TextOut(hDC, 0, 100, szMoney, lstrlen(szMoney));
+	TextOut(hDC, 0, 130, szScore, lstrlen(szScore));
+	TextOut(hDC, 0, 160, szHp, lstrlen(szHp));
 
 
 }
 
 void CStage01::Release(void)
 {
+	CMapMgr::Get_Instance()->Destroy_Instance();
 }

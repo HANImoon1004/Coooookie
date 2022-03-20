@@ -11,7 +11,8 @@ Obstacle::Obstacle(MAPINFO& mapInfo, INMAP eINID)
 	: CMaps(mapInfo, eINID)
 {
 	m_bDead = false;
-
+	m_iMoney = 0;
+	m_iScore = 0;
 	m_tFrame.iFrameStart = 0;//가로 시작
 	m_tFrame.iFrameEnd = 5; //가로 끝
 	m_tFrame.iFrameAnimation = 0;//세로 시작 위치
@@ -46,6 +47,16 @@ void Obstacle::Render(HDC hDC)
 
 void Obstacle::Release()
 {
+}
+
+void Obstacle::Update_Rect()
+{
+	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
+
+	m_tRect.left = long(m_tInfo.tPoint.fX - (m_tInfo.tPoint.iCX * 0.3f) + iScrollX);
+	m_tRect.top = long(m_tInfo.tPoint.fY - (m_tInfo.tPoint.iCY * 0.3f));
+	m_tRect.right = long(m_tInfo.tPoint.fX + (m_tInfo.tPoint.iCX * 0.3f) + iScrollX);
+	m_tRect.bottom = long(m_tInfo.tPoint.fY + (m_tInfo.tPoint.iCY * 0.3f));
 }
 
 void Obstacle::Animation_Change()

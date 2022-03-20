@@ -36,9 +36,9 @@
 
 #include <io.h>
 
-#include "fmod.h"
-#include "fmod.hpp"
-#pragma comment(lib, "fmodex_vc.lib")
+#include "../FMOD/fmod.h"
+#include "../FMOD/fmod.hpp"
+#pragma comment(lib, "../FMOD/fmodex_vc.lib")
 
 
 

@@ -22,7 +22,6 @@ public:
 	void			Set_ScrollX(float _fX) { m_fScrollX += _fX; }
 	void			Set_ScrollY(float _fY) { m_fScrollY += _fY; }
 
-	void			Set_ScLock_Pos(float _fX, float _fY) { m_fScrollLockX = _fX; m_fScrollLockY = _fY; }
 
 	void			Scroll_Lock(void);
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Include.h"
 
+
 class CObj
 {
 public:
@@ -33,6 +34,8 @@ public:
 	virtual void Render(HDC hDC) PURE;
 	virtual void Release(void) PURE;
 
+	static		float	g_fSound;
+
 protected:
 	void		Update_Rect(void);
 	void		Move_Frame(void);
@@ -58,6 +61,5 @@ protected:
 	int				m_iDrawIDX;
 	int				m_iDrawIDY; //0310 hani 
 
-	static		float	g_fSound;
 };
 

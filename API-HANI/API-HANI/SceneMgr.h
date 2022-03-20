@@ -13,6 +13,8 @@ private:
 
 public:
 	SCENEID		Get_SceneID(void) { return m_eCurScene; }
+	CScene* Get_CScene(void) { return m_pScene; }
+
 	void		Set_Scene(SCENEID eScene);
 	void		Update(void);
 	void		Late_Update(void);

@@ -41,10 +41,30 @@
 #define			OTTE_CX					120
 #define			OTTE_CY					230
 
+#define			JELLY_CX					70
+#define			JELLY_CY					61
+
+#define			BOOSTER_CX				90
+#define			BOOSTER_CY				90
+
+#define			BIG_CX							90
+#define			BIG_CY							90
+
+#define			MAGNET_CX					90
+#define			MAGNET_CY					90
+
+#define			PET_CX						140
+#define			PET_CY						140
+
+
+#define			DEFAULT_SPEED		2.5f
+#define			BOOST_SPEED			7
 #define			SPEED_SCR				3
 
 #define			KEY_SPACE				0x00100000
 #define			KEY_DOWN					0x00000008
+
+
 
 
 extern HWND			g_hWnd;

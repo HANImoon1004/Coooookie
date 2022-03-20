@@ -20,7 +20,7 @@ void CSceneMgr::Set_Scene(SCENEID eScene)
 {
 	m_eCurScene = eScene;
 
-	//		로고				메뉴
+	//		end, 로고 다르니까 지우고 현재가 메뉴돼 그리고 이전에 현재 넣어 그럼 이전이랑 현재 같으니까..
 	if (m_ePreScene != m_eCurScene)
 	{
 		Safe_Delete(m_pScene);	// 이 코드에 따른 문제가 발생할 수 있다.

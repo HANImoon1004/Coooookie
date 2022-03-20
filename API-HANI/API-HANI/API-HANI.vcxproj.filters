@@ -85,6 +85,21 @@
     <Filter Include="01. Object\01. Map\03. Coin">
       <UniqueIdentifier>{ea03a180-c548-4f90-a9ef-148a5baeadb8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Object\01. Map\04. Jelly">
+      <UniqueIdentifier>{a0f828ed-1fc6-4f05-932a-d9789b5c3d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\01. Map\05. Item">
+      <UniqueIdentifier>{6ec9ee15-a5f6-43b2-9610-ca38466337b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\08. SoundMgr">
+      <UniqueIdentifier>{bd4b441a-55a5-4913-8b40-d8f5b82b6e12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\10. MenuPlayer">
+      <UniqueIdentifier>{1aaca9f6-3ae4-4667-be0d-84fe734e6f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Object\00. Pet">
+      <UniqueIdentifier>{ec528bb0-f56c-4ce6-ad41-e0d66d1ca5ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -183,6 +198,36 @@
     <ClInclude Include="Coin.h">
       <Filter>01. Object\01. Map\03. Coin</Filter>
     </ClInclude>
+    <ClInclude Include="GCoin.h">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="BCoin.h">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="BGCoin.h">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="Jelly.h">
+      <Filter>01. Object\01. Map\04. Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="Booster.h">
+      <Filter>01. Object\01. Map\05. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Big.h">
+      <Filter>01. Object\01. Map\05. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Magnet.h">
+      <Filter>01. Object\01. Map\05. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMgr.h">
+      <Filter>98. Manager\08. SoundMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPlayer.h">
+      <Filter>01. Object\10. MenuPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="Pet.h">
+      <Filter>01. Object\00. Pet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -253,6 +298,36 @@
     </ClCompile>
     <ClCompile Include="Coin.cpp">
       <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="GCoin.cpp">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="BCoin.cpp">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="BGCoin.cpp">
+      <Filter>01. Object\01. Map\03. Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="Jelly.cpp">
+      <Filter>01. Object\01. Map\04. Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="Booster.cpp">
+      <Filter>01. Object\01. Map\05. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Big.cpp">
+      <Filter>01. Object\01. Map\05. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Magnet.cpp">
+      <Filter>01. Object\01. Map\05. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundMgr.cpp">
+      <Filter>98. Manager\08. SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuPlayer.cpp">
+      <Filter>01. Object\10. MenuPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="Pet.cpp">
+      <Filter>01. Object\00. Pet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

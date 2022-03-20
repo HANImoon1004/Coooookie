@@ -34,3 +34,12 @@ void COtte::Render(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		ASHBLUE);
 }
+
+int COtte::Update()
+{
+	if (m_bDead)
+		return MAP_DEAD;
+
+	Update_Rect();
+	return MAP_NOEVENT;
+}

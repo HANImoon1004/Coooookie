@@ -15,6 +15,12 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
+public:
+	void Set_Scroll(float fScroll) { m_fScroll = fScroll; }
 
+private:
+	DWORD		m_dwTime;
+	int				m_iScroll;
+	float			m_fScroll = DEFAULT_SPEED;
 };
 
