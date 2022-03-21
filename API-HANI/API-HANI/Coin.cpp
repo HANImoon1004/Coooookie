@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Coin.h"
-
+#include "EffectMgr.h"
 
 Coin::Coin()
 {
@@ -50,7 +50,10 @@ void Coin::Animation_Change()
 
 int Coin::Update()
 {
-	
+	m_tInfos.fCX = 68.f;
+	m_tInfos.fCY = 68.f;
+	m_tInfos.fX = m_tInfo.tPoint.fX;
+	m_tInfos.fY = m_tInfo.tPoint.fY;
 
 	Move_Frame();
 	Update_Rect();
@@ -78,24 +81,17 @@ void Coin::Render(HDC hDC)
 
 int Coin::Late_Update(HDC hDC)
 {
+	//m_tInfos.fCX = 68.f;
+	//m_tInfos.fCY = 68.f;
+	//m_tInfos.fX = m_tInfo.tPoint.fX;
+	//m_tInfos.fY = m_tInfo.tPoint.fY;
+
 	if (true == m_bDead)
 	{
-		HDC hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"Coin_Effect");
-		//Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
 
-		int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
-		GdiTransparentBlt(hDC, m_tInfo.tPoint.fX - m_tInfo.tPoint.iCX / 2.f + iScrollX,
-			m_tInfo.tPoint.fY - m_tInfo.tPoint.iCY / 2.f,
-			m_tInfo.tPoint.iCX,
-			m_tInfo.tPoint.iCY,
-			hMemDC,
-			0, 0,
-			m_tInfo.tPoint.iCX,
-			m_tInfo.tPoint.iCY,
-			ASHBLUE);
 
 		return OBJ_DEAD;
 	}
 	else
-		OBJ_NOEVENT;
+		return OBJ_NOEVENT;
 }

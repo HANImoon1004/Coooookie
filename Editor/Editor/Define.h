@@ -20,6 +20,9 @@
 #define			BLOCK_CX					100
 #define			BLOCK_CY					113
 
+#define			MIDBLOCK_CX			129
+#define			MIDBLOCK_CY			 52
+
 #define			CAT_CX						130  
 #define			CAT_CY						130
 

@@ -1,5 +1,59 @@
 ﻿  Big.cpp
 c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\big.cpp(24): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\big.cpp(34): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Otte.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\otte.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\otte.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Obstacle.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\obstacle.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\obstacle.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MyBmp.cpp
+  Mouse.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mouse.cpp(27): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mouse.cpp(29): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mouse.cpp(30): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MidairBlock.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\midairblock.cpp(27): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\midairblock.cpp(36): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Maps.cpp
+  MapMgr.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mapmgr.cpp(178): warning C4244: '-=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mapmgr.cpp(179): warning C4244: '-=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\mapmgr.cpp(435): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainGame.cpp
+  Magnet.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\magnet.cpp(23): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\magnet.cpp(33): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  KeyMgr.cpp
+  Jelly.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\jelly.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\jelly.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GCoins.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\gcoins.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\gcoins.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Editor.cpp
+  CollisionMgr.cpp
+  Coin.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\coin.cpp(25): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\coin.cpp(35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CScrollMgr.cpp
+  Booster.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\booster.cpp(23): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\booster.cpp(33): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  BmpMgr.cpp
+  Block.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\block.cpp(29): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\block.cpp(38): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  BigSVcoin.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\bigsvcoin.cpp(23): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\bigsvcoin.cpp(33): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  BigGDcoin.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\biggdcoin.cpp(23): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\editor\editor\biggdcoin.cpp(33): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
   Editor.vcxproj -> C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\Editor\x64\Debug\Editor.exe
   Editor.vcxproj -> C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\Editor\x64\Debug\Editor.pdb (Full PDB)

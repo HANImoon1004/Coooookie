@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Pet.h"
 #include "MapMgr.h"
+#include "SoundMgr.h"
 
 //#define MAX_COMPUTERNAME_LENGTH 31
 
@@ -36,13 +37,17 @@ void CStage01::Initialize(void)
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Booster.bmp", L"Booster");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Big.bmp", L"Big");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/Magnet.bmp", L"Magnet");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Map/MidBlock.bmp", L"MidBlock");
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Player/Gaeguri.bmp", L"Gaeguri");
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/UI/HPback.bmp", L"HPback");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/UI/HPbar.bmp", L"HPbar");
 
-	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Effect/Coin_Effect.bmp", L"Coin_Effect");
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/쑥쑥튼튼채소마을.mp3", SOUND_BGM, CObj::g_fSound);
+
+	CSoundMgr::Get_Instance()->PlaySound(L"쑥쑥튼튼채소마을.mp3", SOUND_BGM, CObj::g_fSound);
+
 
 
 	CObj* pObj = nullptr;
@@ -130,26 +135,15 @@ void CStage01::Render(HDC hDC)
 	hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"HPback");
 	
 	GdiTransparentBlt(hDC,
-		WINCX*0.2, 30,
+		WINCX*0.2, 20,
 		500, 51,	hMemDC,
 		0, 0,	500,  51, ASHBLUE); 
 	
-	//GdiTransparentBlt(hDC,
-	//		int(m_tInfo.fX - m_tInfo.fCX * 0.5),//복사 받을 위치 좌표
-	//		int(m_tInfo.fY - m_tInfo.fCY * 0.5),
-	//		m_tInfo.fCX, //복사 받을 가로 길이
-	//		m_tInfo.fCY,
-	//		hMemDC,
-	//		int(m_tInfo.fCX) * m_tFrame.iFrameStart, //비트맵의 시작 좌표값 출력 시작 지점
-	//		int(m_tInfo.fCY) * m_tFrame.iFrameAnimation, //비트맵의 시작 좌표값 출력 시작 지점,
-	//		m_tInfo.fCX, //복사 할 비트맵 가로 길이
-	//		m_tInfo.fCY,
-	//		ASHBLUE);
 
 	hMemDC = CBmpMgr::Get_Instance()->Find_Image(L"HPbar");
 
 	GdiTransparentBlt(hDC,
-		WINCX * 0.2, 30,
+		WINCX * 0.2, 20,
 		iHp, 51, hMemDC,
 		0, 0, iHp, 51, ASHBLUE); //hp가 180이 되면 죽어야함
 
@@ -162,8 +156,20 @@ void CStage01::Render(HDC hDC)
 	TCHAR szMoney[32];
 	TCHAR szScore[32];
 	TCHAR szHp[32];
+	SetBkMode(hDC, 1);
+	SetTextColor(hDC, WHITE);
+	HFONT hFont, oldFont;
+	hFont = CreateFont(30, //높이
+		0, 0, 0, 0, 0, 0, 0,
+		HANGUL_CHARSET, 0, 0, 0,
+		VARIABLE_PITCH || FF_ROMAN,
+		TEXT("CookieRun Black")); //폰트
+	oldFont = (HFONT)SelectObject(hDC, hFont);
 
-	wsprintf(szMoney, L"가진 돈 : %i", iMoney);
+	//TextOut(hDC, 300, 300, szComName, lstrlen(szComName)); //단순히 지영하니 뜸
+	wsprintf(szMoney, L"%i 점!", iScore); //세번째 인수는 %s, 2인자를 1인자에 복사해주는 것 같다
+	TextOut(hDC, 810, 20, szMoney, lstrlen(szMoney));
+	//wsprintf(szMoney, L"가진 돈 : %i", iMoney);
 	wsprintf(szScore, L"점수 : %i", iScore);
 	wsprintf(szHp, L"체력 : %i", iHp);
 

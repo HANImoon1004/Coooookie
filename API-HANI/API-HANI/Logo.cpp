@@ -2,6 +2,8 @@
 #include "Logo.h"
 #include "BmpMgr.h"
 #include "SceneMgr.h"
+#include "SoundMgr.h"
+#include "Obj.h"
 CLogo::CLogo()
 {
 }
@@ -15,6 +17,8 @@ CLogo::~CLogo()
 void CLogo::Initialize(void)
 {
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Logo.bmp", L"Logo");
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Night_Sea_Under_The_Moonlight.mp3", SOUND_BGM, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySound(L"Night_Sea_Under_The_Moonlight.mp3", SOUND_BGM, CObj::g_fSound);
 }
 
 int CLogo::Update(void)

@@ -9,6 +9,7 @@ typedef struct tagInfo
 	float fCX; //가로길이
 	float fCY; //세로길이
 
+	TCHAR* pFrameKey;
 }INFO;
 
 

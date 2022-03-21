@@ -15,13 +15,17 @@
 #define			CENTERED(fCX)		(WINCX - FCX)*0.5
 
 #define			ASHBLUE						RGB(156,175,217)
-
+#define			WHITE							RGB(255,255,255)
+#define			BLACK							RGB(0,0,0)
 
 #define			PLAYER_CX				200
 #define			PLAYER_CY				200	
 
 #define			BLOCK_CX					100
 #define			BLOCK_CY					113
+
+#define			MIDBLOCK_CX			129
+#define			MIDBLOCK_CY			 52
 
 #define			CAT_CX						130  
 #define			CAT_CY						130
@@ -57,8 +61,9 @@
 #define			PET_CY						140
 
 
-#define			DEFAULT_SPEED		2.5f
-#define			BOOST_SPEED			7
+#define			DEFAULT_SPEED		4
+#define			BOOST_SPEED			10
+#define			SLOW_SPEED				2.f
 #define			SPEED_SCR				3
 
 #define			KEY_SPACE				0x00100000

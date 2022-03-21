@@ -30,6 +30,7 @@ void CMainGame::Initialize()
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Booster.bmp", L"Booster");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Big.bmp", L"Big");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Magnet.bmp", L"Magnet");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/MidBlock.bmp", L"MidBlock");
 
 
 

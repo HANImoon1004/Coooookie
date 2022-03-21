@@ -51,6 +51,7 @@ protected:
 	FRAME					m_tFrame;
 	RECT						m_tRect;
 	MAPINFO				m_tInfo;
+	INFO						m_tInfos;
 	INMAP					m_eINID;
 	DWORD					m_dwTime = GetTickCount();
 
@@ -58,6 +59,7 @@ protected:
 	int							m_iMoney;
 	float						m_fSpeed;
 	float						m_fScroll = 8.f;
+	float						m_fAngle;
 };
 
 

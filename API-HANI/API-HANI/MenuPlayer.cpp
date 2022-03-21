@@ -2,6 +2,8 @@
 #include "MenuPlayer.h"
 #include "SceneMgr.h"
 #include "BmpMgr.h"
+#include "SoundMgr.h"
+#include "SoundMgr.h"
 
 MenuPlayer::MenuPlayer()
 {
@@ -60,6 +62,7 @@ void MenuPlayer::Late_Update(void)
 
 			return;
 		}
+		CSoundMgr::Get_Instance()->PlaySound(L"PanCake_Jump.wav", SOUND_EFFECT, g_fSound);
 
 		m_tFrame.iFrameAnimation = 1;
 	}

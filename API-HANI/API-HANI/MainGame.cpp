@@ -8,6 +8,8 @@
 #include "CollisionMgr.h"
 #include "KeyMgr.h"
 #include "SoundMgr.h"
+#include "EffectMgr.h"
+
 
 CMainGame::CMainGame()
 	: m_dwTime(GetTickCount()), m_iFPS(0)
@@ -29,7 +31,7 @@ void CMainGame::Initialize()
 	
 	CSoundMgr::Get_Instance()->Initialize();
 	CSceneMgr::Get_Instance()->Set_Scene(SC_LOGO);
-
+	CEffectMgr::Get_Instance()->Initialize();
 	
 }
 
@@ -37,7 +39,8 @@ void CMainGame::Update()
 {
 	CKeyMgr::Get_Instance()->Update();
 	CSceneMgr::Get_Instance()->Update();
-	
+	CEffectMgr::Get_Instance()->Update();
+
 
 }
 
@@ -86,7 +89,7 @@ void CMainGame::Release()
 {
 	CSoundMgr::Get_Instance()->Destroy_Instance();
 	CBmpMgr::Get_Instance()->Destroy_Instance();
-	
+	CEffectMgr::Get_Instance()->Destroy_Instance();
 
 	ReleaseDC(g_hWnd, m_DC);
 

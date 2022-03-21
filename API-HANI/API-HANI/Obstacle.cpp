@@ -18,6 +18,8 @@ Obstacle::Obstacle(MAPINFO& mapInfo, INMAP eINID)
 	m_tFrame.iFrameAnimation = 0;//세로 시작 위치
 	m_tFrame.dwSpeed = 100; //낮을 수록 빠름
 	//고양이가 드디어 움직여~~~ 고양이 속도 더 빠르게
+
+	
 }
 
 Obstacle::~Obstacle()
@@ -57,6 +59,7 @@ void Obstacle::Update_Rect()
 	m_tRect.top = long(m_tInfo.tPoint.fY - (m_tInfo.tPoint.iCY * 0.3f));
 	m_tRect.right = long(m_tInfo.tPoint.fX + (m_tInfo.tPoint.iCX * 0.3f) + iScrollX);
 	m_tRect.bottom = long(m_tInfo.tPoint.fY + (m_tInfo.tPoint.iCY * 0.3f));
+
 }
 
 void Obstacle::Animation_Change()
@@ -83,6 +86,14 @@ int Obstacle::Late_Update(HDC hDC)
 {
 	return OBJ_NOEVENT;
 
+}
+
+void Obstacle::Crushed(void)
+{
+
+
+	m_tInfo.tPoint.fX = m_fPower * cosf(fRadian);
+	m_tInfo.tPoint.fY = m_fPower * sinf(fRadian) - 9.8 * m_fTime;
 }
 
 int Obstacle::Update()

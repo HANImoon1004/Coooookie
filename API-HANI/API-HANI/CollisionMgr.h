@@ -18,7 +18,9 @@ public:
 
 	static bool Collision_Map(list<CMaps*> Dest, list<CObj*> Sour);
 
-	static void Collision_Item(list<CMaps*>& Dest, list<CObj*>&  Sour);
+	static bool Collision_Item(list<CMaps*>& Dest, list<CObj*>&  Sour);
+
+	static void Collision_Otte(list<CMaps*>& Dest, list<CObj*>& Sour);
 
 private:
 	static bool Check_Sphere(const CObj* pDstObject, const CObj* rSrcObject);

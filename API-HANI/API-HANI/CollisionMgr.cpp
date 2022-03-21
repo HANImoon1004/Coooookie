@@ -7,7 +7,7 @@
 #include "Maps.h"
 #include "Block.h"
 #include "Player.h"
-
+#include "Otte.h"
 CollisionMgr::CollisionMgr()
 {
 }
@@ -145,14 +145,14 @@ bool CollisionMgr::Collision_Map(list<CMaps*> Dest, list<CObj*> Sour)
 {
 
 	RECT rc{};
-	
+
 	for (auto& DestIter : Dest)
 	{
 		for (auto& SourIter : Sour)
 		{
 			if (IntersectRect(&rc, &(DestIter->Get_Rect()), &(SourIter->Get_Rect())))
 			{
- 				return true;
+				return true;
 				//DestIter->Set_PosY(-(rc.bottom - rc.top));
 			}
 
@@ -165,17 +165,18 @@ bool CollisionMgr::Collision_Map(list<CMaps*> Dest, list<CObj*> Sour)
 }
 
 //&붙이는 거랑 안 붙이는 거.. 
-void CollisionMgr::Collision_Item(list<CMaps*>& Dest, list<CObj*>& Sour)
+bool CollisionMgr::Collision_Item(list<CMaps*>& Dest, list<CObj*>& Sour)
 {
 	RECT rc = {};
 	for (auto& Destiter : Dest)
 	{
 		for (auto& Souriter : Sour)
 		{
+
 			if (IntersectRect(&rc, &Destiter->Get_Rect(), &Souriter->Get_Rect()))
 			{
 				int iMoney = Destiter->Get_Money();
-				int iScore = Destiter->Get_Score(); //코인꺼를 가져오고 싶다고! 
+				int iScore = Destiter->Get_Score() * 5; //코인꺼를 가져오고 싶다고! 
 				//map 생성자에 0으로 넣어놔서 안됐었어
 				INMAP eINID = *Destiter->Get_INID();
 
@@ -189,53 +190,108 @@ void CollisionMgr::Collision_Item(list<CMaps*>& Dest, list<CObj*>& Sour)
 						dynamic_cast<Player*>(Souriter)->Set_Hp(-5);
 						dynamic_cast<Player*>(Souriter)->Set_Status(PLAYER_HIT);
 					}
+					return true;
 					break;
 				case OTTE:
-					dynamic_cast<Player*>(Souriter)->Set_Hp(-5);
-					dynamic_cast<Player*>(Souriter)->Set_Status(PLAYER_HIT);
+					if (false == dynamic_cast<Player*>(Souriter)->Get_isSuper())
+					{
+						dynamic_cast<Player*>(Souriter)->Set_Hp(-5);
+						dynamic_cast<Player*>(Souriter)->Set_Status(PLAYER_HIT);
+					}
+					return true;
 					break;
 				case COIN_SS:
 					dynamic_cast<Player*>(Souriter)->Set_Money(iMoney);
 					Destiter->Set_Dead(); // 죽여
+					return true;
 					break;
 				case COIN_SB:
 					dynamic_cast<Player*>(Souriter)->Set_Money(iMoney);
 					dynamic_cast<Player*>(Souriter)->Set_Score(iScore);
 					Destiter->Set_Dead();
+					return true;
 					break;
 				case COIN_GS:
 					dynamic_cast<Player*>(Souriter)->Set_Money(iMoney);
 					dynamic_cast<Player*>(Souriter)->Set_Score(iScore);
 					Destiter->Set_Dead();
+					return true;
 					break;
 				case COIN_GB:
 					dynamic_cast<Player*>(Souriter)->Set_Money(iMoney);
 					dynamic_cast<Player*>(Souriter)->Set_Score(iScore);
 					Destiter->Set_Dead();
+					return true;
 					break;
 				case JELLY:
 					dynamic_cast<Player*>(Souriter)->Set_Score(iScore);
 					Destiter->Set_Dead();
+					return true;
 					break;
 				case BOOSTER:
 					dynamic_cast<Player*>(Souriter)->Set_Booster();
 					Destiter->Set_Dead();
+					return true;
 					break;
 				case BIG:
 					dynamic_cast<Player*>(Souriter)->Set_Big();
 					dynamic_cast<Player*>(Souriter)->Set_Status(PLAYER_BIG);
 					Destiter->Set_Dead();
+					return true;
 					break;
 				case MAGNET:
 
 					Destiter->Set_Dead();
+					return true;
 					break;
 				default:
+					return true;
 					break;
+				}
+
+				return false;
 			}
 		}
 	}
 }
+
+void CollisionMgr::Collision_Otte(list<CMaps*>& Dest, list<CObj*>& Sour)
+{
+	RECT rc{};
+	for (auto& DestIter : Dest)
+	{
+		for (auto& SourIter : Sour)
+		{
+			if (IntersectRect(&rc, &DestIter->Get_Rect(), &SourIter->Get_Rect()))
+			{
+				PLAYERID eID = dynamic_cast<Player*>(SourIter)->Get_Status();
+
+				switch (eID)
+				{
+				case PLAYER_IDLE: PLAYER_RUN: PLAYER_SLIDE:PLAYER_JUMP:PLAYER_DOUBLEJUMP:
+			PLAYER_MAGNET:PLAYER_END:
+				break;
+				case PLAYER_HIT:
+					break;
+				case PLAYER_DIE:
+					break;
+				case PLAYER_DEAD:
+					break;
+				case PLAYER_BOOSTER: PLAYER_BIG:
+					{
+						INMAP MapID = *DestIter->Get_INID();
+						if (MapID == OTTE)
+							dynamic_cast<Otte*>(DestIter)->Set_Rotation();
+						break;
+					}
+					
+				default:
+					break;
+				}
+			}
+		}
+	}
+
 }
 
 bool CollisionMgr::Check_Sphere(const CObj* pDstObject, const CObj* rSrcObject)

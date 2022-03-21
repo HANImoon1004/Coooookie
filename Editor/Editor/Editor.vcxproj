@@ -166,6 +166,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapMgr.h" />
     <ClInclude Include="Maps.h" />
+    <ClInclude Include="MidairBlock.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="MyBmp.h" />
     <ClInclude Include="Obstacle.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapMgr.cpp" />
     <ClCompile Include="Maps.cpp" />
+    <ClCompile Include="MidairBlock.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="MyBmp.cpp" />
     <ClCompile Include="Obstacle.cpp" />

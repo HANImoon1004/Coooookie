@@ -9,6 +9,9 @@
 #include "Coin.h"
 #include "SoundMgr.h"
 #include "SceneMgr.h"
+#include "EffectMgr.h"
+#include "Effect.h"
+#include "Coin.h"
 
 CObjMgr* CObjMgr::m_pInstance = nullptr;
 
@@ -22,8 +25,9 @@ CObjMgr::CObjMgr()
 		m_MapList[MAP_ITEM] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_ITEM);
 
 		CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+		CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Jelly.wav", SOUND_EFFECT, CObj::g_fSound);
+		CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/KingCoin.wav", SOUND_EFFECT, CObj::g_fSound);
 
-	
 	
 }
 
@@ -82,11 +86,14 @@ void CObjMgr::Late_Update(void)
 		}
 	}
 	//충돌처리
+	
 	CollisionMgr::Collision_Block(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]);
 	if (CollisionMgr::Collision_Rect(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]))
 	{
  		dynamic_cast<Player*>(m_ObjList[OBJ_PLAYER].front())->Jump_Stop();
 	}
+	CollisionMgr::Collision_Otte(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
+
 	//if(CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
 	//{
 
@@ -95,13 +102,27 @@ void CObjMgr::Late_Update(void)
 	//
 	//}//collision_block jal daem.  이러면 맨 앞의 하나만 사라진다.
 
-	CollisionMgr::Collision_Item(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]);
-	if(true == CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+	if (CollisionMgr::Collision_Item(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+	{
 		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_COIN, CObj::g_fSound);
+		CSoundMgr::Get_Instance()->PlaySound(L"KingCoin.wav", SOUND_COIN, CObj::g_fSound);
+		float fX = m_MapList[MAP_COIN].front()->Get_MapInfo()->tPoint.fX;
+		float fY = m_MapList[MAP_COIN].front()->Get_MapInfo()->tPoint.fY;
+	/*	CObj* pObj = new CEffect(fX, fY, 68, 68, EF_COIN, L"Coin_Effect");
+		m_ObjList[OBJ_EFFECT].push_back(pObj);*/
+
+	}
+	
+
 
 	CollisionMgr::Collision_Item(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
 	CollisionMgr::Collision_Item(m_MapList[MAP_ITEM], m_ObjList[OBJ_PLAYER]);
-	CollisionMgr::Collision_Item(m_MapList[MAP_JELLY], m_ObjList[OBJ_PLAYER]);
+	if (CollisionMgr::Collision_Item(m_MapList[MAP_JELLY], m_ObjList[OBJ_PLAYER]))
+	{
+		CSoundMgr::Get_Instance()->PlaySound(L"Jelly.wav", SOUND_JELLY, CObj::g_fSound);
+
+	}
 
 }
 

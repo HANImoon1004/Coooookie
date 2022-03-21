@@ -144,6 +144,9 @@
     <ClInclude Include="Mouse.h">
       <Filter>04. CollisionMgr\05. MouseMgr</Filter>
     </ClInclude>
+    <ClInclude Include="MidairBlock.h">
+      <Filter>Map\00. Block</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>04. CollisionMgr\05. MouseMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MidairBlock.cpp">
+      <Filter>Map\00. Block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

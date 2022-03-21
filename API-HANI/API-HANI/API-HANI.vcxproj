@@ -156,6 +156,7 @@
     <ClInclude Include="Coin.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="EffectMgr.h" />
     <ClInclude Include="GCoin.h" />
     <ClInclude Include="Jelly.h" />
     <ClInclude Include="KeyMgr.h" />
@@ -163,7 +164,9 @@
     <ClInclude Include="MapMgr.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="MenuPlayer.h" />
+    <ClInclude Include="MidBlock.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Otte.h" />
     <ClInclude Include="Pet.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="CScrollMgr.h" />
@@ -199,6 +202,7 @@
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EffectMgr.cpp" />
     <ClCompile Include="GCoin.cpp" />
     <ClCompile Include="Jelly.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
@@ -206,7 +210,9 @@
     <ClCompile Include="MapMgr.cpp" />
     <ClCompile Include="Maps.cpp" />
     <ClCompile Include="MenuPlayer.cpp" />
+    <ClCompile Include="MidBlock.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Otte.cpp" />
     <ClCompile Include="Pet.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="CScrollMgr.cpp" />

@@ -57,6 +57,8 @@ int CBlock::Late_Update(HDC hDC)
 
 }
 
+
+
 int CBlock::Update()
 {
 	Move_Frame();

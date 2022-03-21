@@ -51,5 +51,7 @@ public:
 
 private:
 	static	CObjMgr*			m_pInstance;
+
+	
 };
 

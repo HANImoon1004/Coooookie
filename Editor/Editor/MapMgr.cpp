@@ -17,6 +17,7 @@
 #include "Magnet.h"
 #include "CollisionMgr.h"
 #include "Mouse.h"
+#include "MidairBlock.h"
 
 CMapMgr* CMapMgr::m_pInstance = nullptr;
 
@@ -84,6 +85,11 @@ void CMapMgr::Load_Map()
 		{
 		case BLOCK:
 			pMap = new CBlock(tMapInfo, eINID);
+			m_listMap[MAP_BLOCK].push_back(pMap);
+			break;
+
+		case MIDBLOCK:
+			pMap = new MidairBlock(tMapInfo, eINID);
 			m_listMap[MAP_BLOCK].push_back(pMap);
 			break;
 
@@ -226,7 +232,14 @@ void CMapMgr::Update()
 	if (CKeyMgr::Get_Instance()->Key_Down('1'))
 	{
 		m_iMapKey = 1;
-
+		if (m_eID == MAP_BLOCK)
+		{
+			m_eID = MAP_BLOCK;
+			m_iMapKey = 1;
+			m_tFrameKey = L"Block";
+			m_iMCX = BLOCK_CX;
+			m_iMCY = BLOCK_CY;
+		}
 		if (m_eID == MAP_OBSTACLE)
 		{
 			m_eID = MAP_OBSTACLE;
@@ -258,6 +271,15 @@ void CMapMgr::Update()
 	if (CKeyMgr::Get_Instance()->Key_Down('2'))
 	{
 		m_iMapKey = 2;
+
+		if (m_eID == MAP_BLOCK)
+		{
+			m_eID = MAP_BLOCK;
+			m_iMapKey = 2;
+			m_tFrameKey = L"MidBlock";
+			m_iMCX = MIDBLOCK_CX;
+			m_iMCY = MIDBLOCK_CY;
+		}
 
 		if (m_eID == MAP_OBSTACLE)
 		{
@@ -324,7 +346,10 @@ void CMapMgr::Update()
 		switch (m_eID)
 		{
 		case MAP_BLOCK:
+			if(m_iMapKey == 1)
 			m_pMap = new CBlock;
+			if (m_iMapKey == 2)
+				m_pMap = new MidairBlock;
 			break;
 
 		case MAP_OBSTACLE:

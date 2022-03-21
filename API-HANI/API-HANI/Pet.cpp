@@ -50,7 +50,7 @@ int CPet::Update(void)
 	else if (pt.x * -1 >= 50)
 		m_tInfo.fX -= 1;
 
-	if (pt.y >= 30)
+	if (pt.y >= 20)
 		m_tInfo.fY += 1;
 
 	if (pt.y * -1 >= 30)

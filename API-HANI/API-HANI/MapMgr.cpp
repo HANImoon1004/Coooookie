@@ -10,6 +10,8 @@
 #include "Booster.h"
 #include "Big.h"
 #include "Magnet.h"
+#include "Otte.h"
+#include "MidBlock.h"
 
 CMapMgr* CMapMgr::m_pInstance = nullptr;
 
@@ -130,8 +132,18 @@ void CMapMgr::Load_Map()
 			m_listMap[MAP_BLOCK].push_back(pMap);
 			break;
 
+		case MIDBLOCK:
+			pMap = new MidBlock(tMapInfo, eINID);
+			m_listMap[MAP_BLOCK].push_back(pMap);
+			break;
+
 		case OBSTACLE:
 			pMap = new Obstacle(tMapInfo, eINID);
+			m_listMap[MAP_OBSTACLE].push_back(pMap);
+			break;
+
+		case OTTE:
+			pMap = new Otte(tMapInfo, eINID);
 			m_listMap[MAP_OBSTACLE].push_back(pMap);
 			break;
 

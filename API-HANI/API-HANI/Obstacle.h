@@ -9,19 +9,24 @@ public:
     virtual ~Obstacle();
 
 public:
-	virtual int	 Update() override;
+	virtual int	    Update() override;
     virtual void Render(HDC hDC) override;
-    void Release();
+    void                 Release();
 
 public:
     void        Update_Rect() override;
 	void		Animation_Change();
 
 	virtual void Move_Frame() override;
-
-
-	// CMaps을(를) 통해 상속됨
 	virtual int Late_Update(HDC hDC) override;
 
+
+    void		Crushed(void);
+
+private:
+    float       m_fPower;
+    float       m_fTime;
+    float fDegree = 60.f;
+    float fRadian = fDegree * PI / 180;
 };
 

@@ -37,9 +37,6 @@
     <Filter Include="98. Manager\03. BmpMgr">
       <UniqueIdentifier>{317d6cc4-653d-4ed5-826f-2325b9b59020}</UniqueIdentifier>
     </Filter>
-    <Filter Include="98. Manager\01. ObjMgr">
-      <UniqueIdentifier>{b66ec3ef-8926-48d3-b0d3-48cf287f57d0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="98. Manager\03. BmpMgr\MyBmp">
       <UniqueIdentifier>{6cb244d2-86e3-4f95-a538-39a47f17c2a5}</UniqueIdentifier>
     </Filter>
@@ -102,6 +99,12 @@
     </Filter>
     <Filter Include="01. Object\02. Effect">
       <UniqueIdentifier>{c2e117d8-9fdd-4ad9-b32c-320b1c9bd59b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\09. EffectMgr">
+      <UniqueIdentifier>{fd915f4f-fb31-40a9-abe4-ffc21fedf22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Manager\01. ObjMgr">
+      <UniqueIdentifier>{b66ec3ef-8926-48d3-b0d3-48cf287f57d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +237,15 @@
     <ClInclude Include="Effect.h">
       <Filter>01. Object\02. Effect</Filter>
     </ClInclude>
+    <ClInclude Include="EffectMgr.h">
+      <Filter>98. Manager\09. EffectMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Otte.h">
+      <Filter>01. Object\01. Map\02. Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="MidBlock.h">
+      <Filter>01. Object\01. Map\01. Block</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -337,6 +349,15 @@
     </ClCompile>
     <ClCompile Include="Effect.cpp">
       <Filter>01. Object\02. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectMgr.cpp">
+      <Filter>98. Manager\09. EffectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Otte.cpp">
+      <Filter>01. Object\01. Map\02. Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="MidBlock.cpp">
+      <Filter>01. Object\01. Map\01. Block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
