@@ -19,5 +19,9 @@ public:
 
 	virtual void Move_Frame() override;
 
+
+	// CMaps을(를) 통해 상속됨
+	virtual int Late_Update(HDC hDC) override;
+
 };
 

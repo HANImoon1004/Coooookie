@@ -62,13 +62,25 @@ int Player::Update(void)
 	if (!Jump())
 		Key_Check();
 
-	if (m_iHp <= 300)
+	if (m_iHp <= 300 && m_eCurState != PLAYER_DEAD)
 	{
-		m_bDead = true;
-		m_eNextState = PLAYER_DIE;
-		m_bJump = false;
-		m_bSuper = true;
+		
+			m_eNextState = PLAYER_DIE;
+			m_bJump = false;
+			m_bSuper = true;
+		m_dwDie = GetTickCount();
+		
+		dynamic_cast<CStage01*>(CSceneMgr::Get_Instance()->Get_CScene())->Set_Scroll(0);
+		if (m_dwDie + 2000 < GetTickCount())
+		{
+			m_eNextState = PLAYER_DEAD;
+			
+		}
+		
 	}
+	/*if (m_bSuper)
+		m_iHp = 1000;*/
+
 	if (m_bBooster)
 	{
 		m_eNextState = PLAYER_BOOSTER;
@@ -80,6 +92,18 @@ int Player::Update(void)
 			m_eNextState = PLAYER_RUN;
 	
 			m_bBooster = false;
+		}
+	}
+	if (m_bBig)
+	{
+		m_eNextState = PLAYER_BIG;
+		if (m_dwBig + 2000 < GetTickCount())
+		{
+			m_bSuper = false;
+			m_dwSupertime = GetTickCount();
+			m_eNextState = PLAYER_RUN;
+
+			m_bBig = false;
 		}
 	}
 	Key_Input();
@@ -217,27 +241,29 @@ void Player::Key_Input()
 
 void Player::Key_Check()
 {
-	if (m_eCurState != PLAYER_BOOSTER)
-	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_DOWN))
+	if (!m_bDead)
 	{
-		m_eNextState = PLAYER_SLIDE;
-	}
+		if (m_eCurState != PLAYER_BOOSTER)
+			if (CKeyMgr::Get_Instance()->Key_Pressing(VK_DOWN))
+			{
+				m_eNextState = PLAYER_SLIDE;
+			}
 
-	if (CKeyMgr::Get_Instance()->Key_Up(VK_DOWN))
-	{
-		m_eNextState = PLAYER_RUN;
-	}
-
-	if (m_eNextState == PLAYER_HIT)
-	{
-
-		DWORD dTime = GetTickCount();
-		if (dTime + 10 < GetTickCount()) //히트 시간이 좀 지났다면
+		if (CKeyMgr::Get_Instance()->Key_Up(VK_DOWN))
 		{
 			m_eNextState = PLAYER_RUN;
 		}
-	}
 
+		if (m_eNextState == PLAYER_HIT)
+		{
+
+			DWORD dTime = GetTickCount();
+			if (dTime + 10 < GetTickCount()) //히트 시간이 좀 지났다면
+			{
+				m_eNextState = PLAYER_RUN;
+			}
+		}
+	}
 
 }
 
@@ -263,12 +289,10 @@ void Player::Update_Rect()
 		break;
 
 	case PLAYER_BIG:
-		m_tRect.left = m_tInfo.fX - (190);
-		m_tRect.right = m_tInfo.fX + (190);
-		m_tRect.top = m_tInfo.fY - (190);
-		m_tRect.bottom = m_tInfo.fY + (190);
-		m_bSuper = true;
-		m_bBig = true;
+		m_tRect.left = m_tInfo.fX - (100);
+		m_tRect.right = m_tInfo.fX + (100);
+		m_tRect.top = m_tInfo.fY - (100);
+		m_tRect.bottom = m_tInfo.fY + (100);
 		break;
 	default:
 		m_tRect.left = m_tInfo.fX - (150 >> 1);
@@ -304,9 +328,9 @@ bool Player::Jump(void)
 	if (GetAsyncKeyState('D'))
 		m_eNextState = PLAYER_DIE;
 
-	if (!m_bBooster)
+	if (!m_bBooster) //부스터일 때 점프 X
 	{
-		if (m_fJumpTime + 150 < GetTickCount()) //hani 이거 의미... 
+		if (m_fJumpTime + 150 < GetTickCount()) //hani 이거 의미... 150 안에 또 누르면?
 		{
 			if ((m_bJump && (!m_bDoJump))) // 점프가 참이고 더블점프 아닐 때
 			{
@@ -391,7 +415,7 @@ void Player::Animation_Change()
 	if (m_eCurState != m_eNextState)
 	{
 		switch (m_eNextState) {
-		case PLAYER_RUN:
+		case PLAYER_RUN:PLAYER_BIG:
 			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 0;//가로 시작
 			m_tFrame.iFrameEnd = 3; //가로 끝
@@ -417,13 +441,20 @@ void Player::Animation_Change()
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 1;
 			m_tFrame.iFrameAnimation = 3;
-			m_tFrame.dwSpeed = 100;
+			m_tFrame.dwSpeed = 300;
 			break;
 		case PLAYER_DIE:
 			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 4;
-			m_tFrame.iFrameAnimation = 2;
+			m_tFrame.iFrameAnimation = 3;
+			m_tFrame.dwSpeed = 200;
+			break;
+		case PLAYER_DEAD:
+			m_pFrameKey = L"Player_Run";
+			m_tFrame.iFrameStart = 3;
+			m_tFrame.iFrameEnd = 4;
+			m_tFrame.iFrameAnimation = 3;
 			m_tFrame.dwSpeed = 200;
 			break;
 		case PLAYER_SLIDE:
@@ -464,7 +495,6 @@ void Player::Set_Big()
 {
 	m_bBig = true;
 	m_bSuper = true;
-	m_eNextState = PLAYER_BIG;
 	m_dwBig = GetTickCount();
 	
 }

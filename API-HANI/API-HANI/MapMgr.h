@@ -11,6 +11,7 @@ public:
 public:
 	void Initialize();
 	void	Update();
+	void Late_Update(HDC hDC);
 	void Render(HDC hDC);
 	void Release(); 
 	void Load_Map();

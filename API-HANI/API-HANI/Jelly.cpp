@@ -76,3 +76,8 @@ void Jelly::Render(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		ASHBLUE);
 }
+
+int Jelly::Late_Update(HDC hDC)
+{
+	return 0;
+}

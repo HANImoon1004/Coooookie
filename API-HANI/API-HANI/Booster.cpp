@@ -76,3 +76,9 @@ void Booster::Render(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		ASHBLUE);
 }
+
+int Booster::Late_Update(HDC hDC)
+{
+	return OBJ_NOEVENT;
+
+}

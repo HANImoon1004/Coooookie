@@ -71,3 +71,8 @@ void Big::Render(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		ASHBLUE);
 }
+
+int Big::Late_Update(HDC hDC)
+{
+	return 0;
+}

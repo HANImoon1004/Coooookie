@@ -100,6 +100,9 @@
     <Filter Include="01. Object\00. Pet">
       <UniqueIdentifier>{ec528bb0-f56c-4ce6-ad41-e0d66d1ca5ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Object\02. Effect">
+      <UniqueIdentifier>{c2e117d8-9fdd-4ad9-b32c-320b1c9bd59b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -228,6 +231,9 @@
     <ClInclude Include="Pet.h">
       <Filter>01. Object\00. Pet</Filter>
     </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>01. Object\02. Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -328,6 +334,9 @@
     </ClCompile>
     <ClCompile Include="Pet.cpp">
       <Filter>01. Object\00. Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>01. Object\02. Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

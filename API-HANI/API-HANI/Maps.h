@@ -36,8 +36,8 @@ public:
 	void					Set_Speed(float fScroll) { m_fScroll= fScroll; }
 
 	virtual int 		Update_();
-	virtual void		Late_Update();
-	virtual void			Update_Rect();
+	virtual int		Late_Update(HDC hDC) PURE;
+	virtual void		Update_Rect();
 	virtual void			Move_Frame() PURE;
 	virtual void			Animation_Change() PURE;
 

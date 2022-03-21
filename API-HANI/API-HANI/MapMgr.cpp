@@ -60,6 +60,27 @@ void CMapMgr::Update()
 	}
 }
 
+void CMapMgr::Late_Update(HDC hDC)
+{
+	for (int i = 0; i < MAP_END; ++i)
+	{
+		auto& iter = m_listMap[i].begin();
+
+		for (; iter != m_listMap[i].end();) //0316 QUE hani 
+		{
+			int iEvent = (*iter)->Late_Update(hDC);
+
+			if (OBJ_DEAD == iEvent)
+			{
+				Safe_Delete<CMaps*>(*iter);
+				iter = m_listMap[i].erase(iter);
+			}
+			else
+				++iter;
+		}
+	}
+}
+
 void CMapMgr::Render(HDC hDC)
 {
 	for (int i = 0; i < MAP_END; ++i)

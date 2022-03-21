@@ -79,6 +79,12 @@ void Obstacle::Move_Frame()
 	}
 }
 
+int Obstacle::Late_Update(HDC hDC)
+{
+	return OBJ_NOEVENT;
+
+}
+
 int Obstacle::Update()
 {
 	Move_Frame();

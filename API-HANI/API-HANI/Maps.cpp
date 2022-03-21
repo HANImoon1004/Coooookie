@@ -29,11 +29,7 @@ int CMaps::Update_()
 	return OBJ_NOEVENT;
 }
 
-void CMaps::Late_Update()
-{
-	if (m_tRect.right + m_fSpeed <= 0)
-		m_bDead = true;
-}
+
 
 void CMaps::Update_Rect()
 {

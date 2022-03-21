@@ -51,6 +51,12 @@ void CBlock::Move_Frame()
 {
 }
 
+int CBlock::Late_Update(HDC hDC)
+{
+	return OBJ_NOEVENT;
+
+}
+
 int CBlock::Update()
 {
 	Move_Frame();

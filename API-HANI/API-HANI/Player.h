@@ -4,7 +4,7 @@
 enum PLAYERID {
 	PLAYER_IDLE, PLAYER_RUN, PLAYER_SLIDE,
 	PLAYER_JUMP, PLAYER_DOUBLEJUMP,
-	PLAYER_HIT, PLAYER_DIE,
+	PLAYER_HIT, PLAYER_DIE, PLAYER_DEAD,
 	PLAYER_BOOSTER, PLAYER_BIG,
 	PLAYER_MAGNET, PLAYER_END
 };
@@ -68,6 +68,7 @@ private:
 	DWORD               m_dwSupertime;
 	DWORD               m_dwBig;
 	DWORD               m_dwBooster;
+	DWORD				m_dwDie;
 
 
 	bool                    m_bJump;

@@ -71,3 +71,9 @@ void Magnet::Render(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		ASHBLUE);
 }
+
+
+int Magnet::Late_Update(HDC hDC)
+{
+	return 0;
+}

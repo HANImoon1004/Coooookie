@@ -33,36 +33,6 @@ CObjMgr::~CObjMgr()
 	Release();
 }
 
-//CObj* CObjMgr::Get_Target(OBJID eID, CObj* pObj)
-//{
-//	if (m_ObjList[eID].empty())
-//		return nullptr;
-//
-//
-//	CObj*		pTarget = nullptr;
-//	float		fDistance = 0.f;
-//
-//	for (auto& iter : m_ObjList[eID])
-//	{
-//		if (iter->Get_Dead())
-//			continue;
-//
-//		float	fWidth = iter->Get_Info().fX - pObj->Get_Info().fX;
-//		float	fHeight = iter->Get_Info().fY - pObj->Get_Info().fY;
-//
-//		float	fDiagonal = sqrtf(fWidth * fWidth + fHeight * fHeight);
-//
-//		if (!pTarget || fDistance > fDiagonal)
-//		{
-//			pTarget = iter;
-//			fDistance = fDiagonal;
-//		}
-//
-//	}
-//
-//	return pTarget;
-//}
-//
 void CObjMgr::AddObject(OBJID eID, CObj* pObj)
 {
 	if (eID >= OBJ_END || nullptr == pObj)
@@ -128,7 +98,7 @@ void CObjMgr::Late_Update(void)
 	CollisionMgr::Collision_Item(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]);
 	if(true == CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
 		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
-	
+
 	CollisionMgr::Collision_Item(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
 	CollisionMgr::Collision_Item(m_MapList[MAP_ITEM], m_ObjList[OBJ_PLAYER]);
 	CollisionMgr::Collision_Item(m_MapList[MAP_JELLY], m_ObjList[OBJ_PLAYER]);

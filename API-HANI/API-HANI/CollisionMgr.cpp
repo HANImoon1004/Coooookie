@@ -184,7 +184,7 @@ void CollisionMgr::Collision_Item(list<CMaps*>& Dest, list<CObj*>& Sour)
 				case BLOCK:
 					break;
 				case OBSTACLE:
-					if (!dynamic_cast<Player*>(Souriter)->Get_isSuper())
+					if (false == dynamic_cast<Player*>(Souriter)->Get_isSuper())
 					{
 						dynamic_cast<Player*>(Souriter)->Set_Hp(-5);
 						dynamic_cast<Player*>(Souriter)->Set_Status(PLAYER_HIT);
