@@ -63,6 +63,6 @@ int CBlock::Update()
 {
 	Move_Frame();
 	Animation_Change();
-	//Update_Rect();
+	Update_Rect();
 	return OBJ_NOEVENT;
 }

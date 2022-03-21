@@ -8,7 +8,7 @@ public:
 	CEffectMgr();
 	~CEffectMgr();
 
-
+	//CEffect* AddObject(OBJID eID, CObj* pObj)
 	void Initialize();
 	void Update();
 	void Render(HDC hDC);

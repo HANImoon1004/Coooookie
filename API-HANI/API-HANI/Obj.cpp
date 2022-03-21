@@ -12,6 +12,7 @@ CObj::CObj()
 	//ZeroMemory(&m_tDraw, sizeof(DRAW));
 	ZeroMemory(&m_tRect, sizeof(RECT));
 	//ZeroMemory(&m_tFrame, sizeof(FRAME));
+
 }
 
 

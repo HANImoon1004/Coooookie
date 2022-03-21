@@ -24,6 +24,8 @@ void CEffectMgr::Initialize()
 
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Effect/Coin_Effect.bmp", L"Coin_Effect");
 
+
+
 }
 
 void CEffectMgr::Update()

@@ -90,6 +90,7 @@ void CMapMgr::Render(HDC hDC)
 		for (auto& iter : m_listMap[i])
 		{
 			iter->Render(hDC);
+			//Rectangle(hDC, iter->Get_Rect().left, iter->Get_Rect().top, iter->Get_Rect().right, iter->Get_Rect().bottom);
 		}
 	}
 }

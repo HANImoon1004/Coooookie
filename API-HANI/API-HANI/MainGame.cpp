@@ -81,7 +81,7 @@ void CMainGame::Render()
 		SRCCOPY);
 
 	CSceneMgr::Get_Instance()->Render(hBackDC);
-	
+	CEffectMgr::Get_Instance()->Render(hBackDC);
 
 }
 

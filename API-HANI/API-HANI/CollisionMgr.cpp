@@ -122,6 +122,46 @@ bool CollisionMgr::Collision_Rect(list<CMaps*> Dest, list<CObj*> Sour) //Que
 	return isColl;
 }
 
+bool CollisionMgr::Collision_Rect(list<CMaps*> Dest, CObj* Sour)
+{
+	bool isColl = false;
+	
+	for (auto& DestIter : Dest)
+	{
+		float	fX = 0.f, fY = 0.f;
+	
+		if (Check_Rect(DestIter, Sour, &fX, &fY))
+		{
+			isColl = true;
+			float SfX = Sour->Get_Info().fX;
+			float SfY = Sour->Get_Info().fY;
+	
+			if (Sour->Get_Info().fY < DestIter->Get_MapInfo()->tPoint.fY)
+			{
+				fY *= -1.f;
+			}
+			Sour->Set_Pos(SfX, SfY + fY);
+		}
+	}
+	return isColl;
+
+	return false;
+}
+
+bool CollisionMgr::Collision_Rect(CMaps* Dest, CObj* Sour)
+{
+	bool isColl = false;
+
+	RECT dest = Dest->Get_Rect();
+	RECT sour = Sour->Get_Rect();
+
+	if (dest.left <= sour.right && dest.right >= sour.left &&
+		dest.top <= sour.bottom && dest.bottom >= sour.top)
+		isColl = true;
+
+	return isColl;
+}
+
 bool CollisionMgr::Collision_Block(list<CMaps*> Dest, list<CObj*> Sour)
 {
 	RECT rc{};
@@ -136,6 +176,22 @@ bool CollisionMgr::Collision_Block(list<CMaps*> Dest, list<CObj*> Sour)
 				isColl = true;
 				DestIter->Set_PosY(-(rc.bottom - rc.top));
 			}
+		}
+	}
+	return isColl;
+}
+
+bool CollisionMgr::Collision_Block(list<CMaps*> Dest, CObj* sour)
+{
+	RECT rc{};
+	bool   isColl = false;
+
+	for (auto& DestIter : Dest)
+	{
+		if (IntersectRect(&rc, &(DestIter->Get_Rect()), &(sour->Get_Rect())))
+		{
+			isColl = true;
+			sour->Set_PosY(-(rc.bottom - rc.top));
 		}
 	}
 	return isColl;
@@ -178,7 +234,7 @@ bool CollisionMgr::Collision_Item(list<CMaps*>& Dest, list<CObj*>& Sour)
 				int iMoney = Destiter->Get_Money();
 				int iScore = Destiter->Get_Score() * 5; //코인꺼를 가져오고 싶다고! 
 				//map 생성자에 0으로 넣어놔서 안됐었어
-				INMAP eINID = *Destiter->Get_INID();
+				INMAP eINID = Destiter->Get_INID();
 
 				switch (eINID)
 				{
@@ -279,7 +335,7 @@ void CollisionMgr::Collision_Otte(list<CMaps*>& Dest, list<CObj*>& Sour)
 					break;
 				case PLAYER_BOOSTER: PLAYER_BIG:
 					{
-						INMAP MapID = *DestIter->Get_INID();
+						INMAP MapID = DestIter->Get_INID();
 						if (MapID == OTTE)
 							dynamic_cast<Otte*>(DestIter)->Set_Rotation();
 						break;

@@ -11,9 +11,12 @@ public:
 public:
 	virtual void Initialize(void) override;
 	virtual int Update(void) override;
-	virtual void Late_Update(void) {};
+	virtual void Late_Update(void) override {};
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
+
+public:
+	void Setting_Dead(bool bDead) { m_bDead = bDead; }
 
 private:
 	float m_fX;
@@ -22,5 +25,6 @@ private:
 	float m_fCY;
 	EFFECT m_eID;
 	TCHAR* m_pFrameKey;
+	bool	m_bDead;
 };
 

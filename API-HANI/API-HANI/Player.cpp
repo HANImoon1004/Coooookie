@@ -119,6 +119,52 @@ int Player::Update(void)
 
 void Player::Late_Update(void)
 {
+	for (int i = 0; i < MAPID::MAP_END; i++)
+	{
+		list<CMaps*> temp = OBJMGR->Get_Map((MAPID)i);
+
+		if ((MAPID)i == MAPID::MAP_BLOCK)
+		{
+			if (CollisionMgr::Collision_Block(temp, this))
+			{
+				switch ((MAPID)i)
+				{
+				case MAP_BLOCK:
+					Jump_Stop();
+					break;
+				}
+			}
+		}
+		else
+		{
+			if (CollisionMgr::Collision_Rect(temp, this))
+			{
+				switch ((MAPID)i)
+				{
+				case MAP_OBSTACLE:
+					break;
+				case MAP_COIN:
+				
+					break;
+				case MAP_JELLY:
+					CSoundMgr::Get_Instance()->PlaySound(L"Jelly.wav", SOUND_JELLY, CObj::g_fSound);
+					break;
+				case MAP_ITEM:
+				{
+
+					CSoundMgr::Get_Instance()->PlaySound(L"KingCoin.wav", SOUND_COIN, CObj::g_fSound);
+					float fX = temp.front()->Get_MapInfo()->tPoint.fX;
+					float fY = temp.front()->Get_MapInfo()->tPoint.fY;
+				}
+				break;
+				case MAP_END:
+				default:
+					break;
+				}
+			}
+		}
+	}
+
 	if (m_dwRunning + 1000 < GetTickCount()) //10초마다 피 깎기
 	{
 		m_iHp -= 10;
@@ -141,7 +187,6 @@ void Player::Late_Update(void)
 
 		}
 	}
-	
 }
 
 void Player::Render(HDC hDC)
@@ -382,16 +427,18 @@ bool Player::Jump(void)
 	else if (m_bJump) // 일단점프
 	{
 		
-		m_fHeight = 2 * (m_fJumpTime * m_fJumpTime * -9.8 * 0.5) + (m_fJumpTime * m_fSpeed);
-		m_tInfo.fY = -m_fHeight + m_fStartY;
+		//m_fHeight = 2 * (m_fJumpTime * m_fJumpTime * -9.8 * 0.5) + (m_fJumpTime * m_fSpeed);
+		//m_tInfo.fY = -m_fHeight + m_fStartY;
 		//m_tInfo.fY -= m_fJumpPower * m_fJumpTime - (4.8f * m_fJumpTime * m_fJumpTime) * 0.5f;
 		//m_fJumpTime += 0.2f; //점프 나중에 하고 0316
 
+		m_tInfo.fY -= m_fJumpPower;
+		m_fJumpPower -= 1.f;
 	}
 
 	else
 	{
-		m_tInfo.fY += m_fJumpTime * 9.8;
+		//m_tInfo.fY += m_fJumpTime * 9.8;
 	}
 	/*else
 		m_tInfo.fY = WINCY - 113 - m_tInfo.fCY * 0.5;
@@ -416,6 +463,7 @@ void Player::Jump_Stop()
 		m_bJump = false;
 		m_bDoJump = false;
 		m_dwTime = GetTickCount();
+		m_fJumpPower = 13.f;
 
 		m_eNextState = PLAYER_RUN;
 	}

@@ -9,6 +9,7 @@
 #include "Pet.h"
 #include "MapMgr.h"
 #include "SoundMgr.h"
+#include "Effect.h"
 
 //#define MAX_COMPUTERNAME_LENGTH 31
 
@@ -47,7 +48,9 @@ void CStage01::Initialize(void)
 	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/¾¦¾¦Æ°Æ°Ã¤¼Ò¸¶À».mp3", SOUND_BGM, CObj::g_fSound);
 
 	CSoundMgr::Get_Instance()->PlaySound(L"¾¦¾¦Æ°Æ°Ã¤¼Ò¸¶À».mp3", SOUND_BGM, CObj::g_fSound);
-
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Jelly.wav", SOUND_EFFECT, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/KingCoin.wav", SOUND_EFFECT, CObj::g_fSound);
 
 
 	CObj* pObj = nullptr;
@@ -59,6 +62,8 @@ void CStage01::Initialize(void)
 	CObjMgr::Get_Instance()->AddObject(OBJ_PET, pObj);
 
 	CMapMgr::Get_Instance()->Initialize();
+
+	
 
 	m_dwTime = GetTickCount();
 

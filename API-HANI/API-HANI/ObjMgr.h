@@ -11,9 +11,14 @@ private:
 	~CObjMgr();
 
 public:
-	CObj*		Get_Player() { return m_ObjList[OBJ_PLAYER].front(); }
-	CObj*		Get_Target(OBJID eID, CObj* pObj);
+	CObj*		Get_Player() 
+	{ 
+		if (m_ObjList[OBJ_PLAYER].empty()) return nullptr;
 
+		return m_ObjList[OBJ_PLAYER].front(); 
+	}
+	CObj*		Get_Target(OBJID eID, CObj* pObj);
+	list<CMaps*> Get_Map(MAPID id) { return m_MapList[id]; }
 
 public:
 	void		AddObject(OBJID eID, CObj* pObj);

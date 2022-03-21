@@ -80,6 +80,5 @@ private:
 
 	PLAYERID        m_eNextState;
 	PLAYERID        m_eCurState;
-
 };
 

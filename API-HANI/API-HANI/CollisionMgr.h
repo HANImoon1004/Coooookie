@@ -14,7 +14,13 @@ public:
 
 	static bool Collision_Rect(list<CMaps*> Dest, list<CObj*> Sour);
 
+	static bool Collision_Rect(list<CMaps*> Dest, CObj* Sour);
+
+	static bool Collision_Rect(CMaps* Dest, CObj* Sour);
+
 	static bool Collision_Block(list<CMaps*> Dest, list<CObj*> Sour);
+
+	static bool Collision_Block(list<CMaps*> Dest, CObj* sour);
 
 	static bool Collision_Map(list<CMaps*> Dest, list<CObj*> Sour);
 
@@ -25,7 +31,5 @@ public:
 private:
 	static bool Check_Sphere(const CObj* pDstObject, const CObj* rSrcObject);
 	static bool Check_Rect(CMaps* pDest, CObj* pSour, float* pfX, float* pfY);
-
-
 };
 

@@ -57,3 +57,7 @@
 #endif
 
 using namespace std;
+
+// SIGLETON DEFINE
+#include "ObjMgr.h"
+#define OBJMGR CObjMgr::Get_Instance()

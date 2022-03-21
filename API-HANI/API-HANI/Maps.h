@@ -13,7 +13,7 @@ public:
 
 public:
 	MAPINFO*		Get_MapInfo() { return &m_tInfo; }
-	INMAP*				Get_INID() { return &m_eINID; }
+	INMAP				Get_INID() { return m_eINID; }
 	const RECT&	Get_Rect() { return m_tRect; }
 	RECT*				 Get_MapRect()
 	{

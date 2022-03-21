@@ -24,9 +24,7 @@ CObjMgr::CObjMgr()
 		m_MapList[MAP_JELLY] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_JELLY);
 		m_MapList[MAP_ITEM] = CMapMgr::Get_Instance()->Get_Instance()->Get_MapList(MAP_ITEM);
 
-		CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Coin.wav", SOUND_EFFECT, CObj::g_fSound);
-		CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Jelly.wav", SOUND_EFFECT, CObj::g_fSound);
-		CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/KingCoin.wav", SOUND_EFFECT, CObj::g_fSound);
+	
 
 	
 }
@@ -65,7 +63,7 @@ int CObjMgr::Update(void)
 		}
 	}
 
-	//if (dynamic_cast<Player*>(CObjMgr::Get_Instance()->Get_Player())->Get_Dead())
+	//if (dynamic_cast<Player*>(CObjMgr::Get_Instance()->Get_Player()))
 	//{
 	//	//죽었으면... 팝업창
 	//}
@@ -87,42 +85,42 @@ void CObjMgr::Late_Update(void)
 	}
 	//충돌처리
 	
-	CollisionMgr::Collision_Block(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]);
-	if (CollisionMgr::Collision_Rect(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]))
-	{
- 		dynamic_cast<Player*>(m_ObjList[OBJ_PLAYER].front())->Jump_Stop();
-	}
-	CollisionMgr::Collision_Otte(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
-
-	//if(CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+	//CollisionMgr::Collision_Block(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]);
+	//if (CollisionMgr::Collision_Rect(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]))
 	//{
-
-	//	m_MapList[MAP_COIN].front()->Set_Dead(); //0317
-
+ 	//	dynamic_cast<Player*>(m_ObjList[OBJ_PLAYER].front())->Jump_Stop();
+	//}
+	//CollisionMgr::Collision_Otte(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
 	//
-	//}//collision_block jal daem.  이러면 맨 앞의 하나만 사라진다.
-
-	if (CollisionMgr::Collision_Item(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
-	{
-		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
-		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_COIN, CObj::g_fSound);
-		CSoundMgr::Get_Instance()->PlaySound(L"KingCoin.wav", SOUND_COIN, CObj::g_fSound);
-		float fX = m_MapList[MAP_COIN].front()->Get_MapInfo()->tPoint.fX;
-		float fY = m_MapList[MAP_COIN].front()->Get_MapInfo()->tPoint.fY;
-	/*	CObj* pObj = new CEffect(fX, fY, 68, 68, EF_COIN, L"Coin_Effect");
-		m_ObjList[OBJ_EFFECT].push_back(pObj);*/
-
-	}
-	
-
-
-	CollisionMgr::Collision_Item(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
-	CollisionMgr::Collision_Item(m_MapList[MAP_ITEM], m_ObjList[OBJ_PLAYER]);
-	if (CollisionMgr::Collision_Item(m_MapList[MAP_JELLY], m_ObjList[OBJ_PLAYER]))
-	{
-		CSoundMgr::Get_Instance()->PlaySound(L"Jelly.wav", SOUND_JELLY, CObj::g_fSound);
-
-	}
+	////if(CollisionMgr::Collision_Map(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+	////{
+	//
+	////	m_MapList[MAP_COIN].front()->Set_Dead(); //0317
+	//
+	////
+	////}//collision_block jal daem.  이러면 맨 앞의 하나만 사라진다.
+	//
+	//if (CollisionMgr::Collision_Item(m_MapList[MAP_COIN], m_ObjList[OBJ_PLAYER]))
+	//{
+	//	CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+	//	CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_COIN, CObj::g_fSound);
+	//	CSoundMgr::Get_Instance()->PlaySound(L"KingCoin.wav", SOUND_COIN, CObj::g_fSound);
+	//	float fX = m_MapList[MAP_COIN].front()->Get_MapInfo()->tPoint.fX;
+	//	float fY = m_MapList[MAP_COIN].front()->Get_MapInfo()->tPoint.fY;
+	///*	CObj* pObj = new CEffect(fX, fY, 68, 68, EF_COIN, L"Coin_Effect");
+	//	m_ObjList[OBJ_EFFECT].push_back(pObj);*/
+	//
+	//}
+	//
+	//
+	//
+	//CollisionMgr::Collision_Item(m_MapList[MAP_OBSTACLE], m_ObjList[OBJ_PLAYER]);
+	//CollisionMgr::Collision_Item(m_MapList[MAP_ITEM], m_ObjList[OBJ_PLAYER]);
+	//if (CollisionMgr::Collision_Item(m_MapList[MAP_JELLY], m_ObjList[OBJ_PLAYER]))
+	//{
+	//	CSoundMgr::Get_Instance()->PlaySound(L"Jelly.wav", SOUND_JELLY, CObj::g_fSound);
+	//
+	//}
 
 }
 
@@ -132,7 +130,13 @@ void CObjMgr::Render(HDC hDC)
 	for (int i = 0; i < OBJ_END; ++i)
 	{
 		for (auto& iter : m_ObjList[i])
+		{
+			if (iter == nullptr)
+				return;
+
 			iter->Render(hDC);
+
+		}
 	}
 
 	for (int i = 0; i < RENDER_END; ++i) //0308 hani
@@ -140,8 +144,10 @@ void CObjMgr::Render(HDC hDC)
 		m_RenderSort[i].sort(CompareY<CObj*>);
 
 		for (auto& iter : m_RenderSort[i])
+		{
 			iter->Render(hDC);
-
+		}
+			
 		m_RenderSort[i].clear();			// 매 프레임마다 정렬 상태가 달라지기 때문
 	}
 }

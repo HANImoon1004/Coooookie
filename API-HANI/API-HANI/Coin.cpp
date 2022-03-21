@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Coin.h"
 #include "EffectMgr.h"
+#include "CollisionMgr.h"
+#include "SoundMgr.h"
+#include "AbstractFactory.h"
 
 Coin::Coin()
 {
@@ -85,9 +88,28 @@ int Coin::Late_Update(HDC hDC)
 	//m_tInfos.fCY = 68.f;
 	//m_tInfos.fX = m_tInfo.tPoint.fX;
 	//m_tInfos.fY = m_tInfo.tPoint.fY;
+	
+	CObj* player = OBJMGR->Get_Player();
+	if (player == nullptr) return OBJ_NOEVENT;
+
+	if (CollisionMgr::Collision_Rect(this, player))
+	{
+		m_bDead = true;
+		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+		CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_COIN, CObj::g_fSound);
+		//CEffect* effect = new CEffect(m_tInfos.fX, m_tInfos.fY,
+			//m_tInfos.fCX, m_tInfos.fCY, EF_COIN, L"Coin_Effect");
+		//CObj* pObj = CAbstractFactory<CEffect>::Create();
+		CObj* pObj = new CEffect(m_tInfos.fX, m_tInfos.fY,
+			m_tInfos.fCX, m_tInfos.fCY, EF_COIN, L"Coin_Effect");
+		CObjMgr::Get_Instance()->AddObject(OBJ_EFFECT, pObj);
+		
+		
+	}
 
 	if (true == m_bDead)
 	{
+	
 
 
 		return OBJ_DEAD;
