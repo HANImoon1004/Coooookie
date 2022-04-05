@@ -1,14 +1,7 @@
-﻿  Effect.cpp
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Maps.h(21,29): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Maps.h(22,31): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(42,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(43,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(53,10): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(52,10): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(51,28): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(50,24): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(48,10): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(47,10): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(46,14): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\API-HANI\Effect.cpp(45,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  ObjMgr.cpp
+c:\users\re___\onedrive\바탕 화면\git\cooookie\api-hani\api-hani\maps.h(22): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\api-hani\api-hani\maps.h(23): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\api-hani\api-hani\player.h(65): warning C4244: '초기화 중': 'float'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\re___\onedrive\바탕 화면\git\cooookie\api-hani\api-hani\objmgr.cpp(79): warning C4018: '>=': signed 또는 unsigned가 일치하지 않습니다.
   API-HANI.vcxproj -> C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\Debug\API-HANI.exe
+  API-HANI.vcxproj -> C:\Users\re___\OneDrive\바탕 화면\Git\Cooookie\API-HANI\Debug\API-HANI.pdb (Full PDB)

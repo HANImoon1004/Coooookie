@@ -100,9 +100,9 @@ int Coin::Late_Update(HDC hDC)
 		//CEffect* effect = new CEffect(m_tInfos.fX, m_tInfos.fY,
 			//m_tInfos.fCX, m_tInfos.fCY, EF_COIN, L"Coin_Effect");
 		//CObj* pObj = CAbstractFactory<CEffect>::Create();
-		CObj* pObj = new CEffect(m_tInfos.fX, m_tInfos.fY,
+		/*CObj* pObj = new CEffect(m_tInfos.fX, m_tInfos.fY,
 			m_tInfos.fCX, m_tInfos.fCY, EF_COIN, L"Coin_Effect");
-		CObjMgr::Get_Instance()->AddObject(OBJ_EFFECT, pObj);
+		CObjMgr::Get_Instance()->AddObject(OBJ_EFFECT, pObj);*/
 		
 		
 	}

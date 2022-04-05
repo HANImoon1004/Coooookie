@@ -14,6 +14,7 @@ class Player :
 {
 public:
 	Player();
+	Player(TCHAR* pFrameKey);
 	virtual ~Player();
 
 public:

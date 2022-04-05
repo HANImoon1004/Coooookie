@@ -18,7 +18,7 @@ public:
 
 public:
 	list<CMaps*>	Get_MapList(MAPID eID) { return m_listMap[eID]; }
-
+	void	Set_Magnet(bool swit);
 
 public:
 	static CMapMgr* Get_Instance()

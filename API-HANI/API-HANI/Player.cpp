@@ -6,8 +6,16 @@
 #pragma comment(lib, "msimg32.lib")
 #include "SoundMgr.h"
 #include "SceneMgr.h"
+#include "MapMgr.h"
+#include "Pet.h"
+
 Player::Player()
 {
+}
+
+Player::Player(TCHAR* pFrameKey)
+{
+	m_pFrameKey =  pFrameKey; //L"Player_Lilac", L"Player_Run"
 }
 
 Player::~Player()
@@ -17,7 +25,7 @@ Player::~Player()
 
 void Player::Initialize(void)
 {
-	m_pFrameKey = L"Player_Run";
+	//m_pFrameKey = L"Player_Run";
 	m_eCurState = PLAYER_RUN;
 	m_eNextState = PLAYER_RUN;
 
@@ -39,7 +47,7 @@ void Player::Initialize(void)
 	m_bBig = false;
 	m_bHit = false;
 	m_bBooster = false;
-	
+
 	m_dwRunning = GetTickCount();
 
 	m_iMoney = 0;
@@ -65,19 +73,19 @@ int Player::Update(void)
 
 	if (m_iHp <= 50 && m_eCurState != PLAYER_DEAD)
 	{
-		
-			m_eNextState = PLAYER_DIE;
-			m_bJump = false;
-			m_bSuper = true;
+
+		m_eNextState = PLAYER_DIE;
+		m_bJump = false;
+		m_bSuper = true;
 		m_dwDie = GetTickCount();
-		
+
 		dynamic_cast<CStage01*>(CSceneMgr::Get_Instance()->Get_CScene())->Set_Scroll(0);
 		if (m_dwDie + 2000 < GetTickCount())
 		{
 			m_eNextState = PLAYER_DEAD;
-			
+
 		}
-		
+
 	}
 	/*if (m_bSuper)
 		m_iHp = 1000;*/
@@ -91,13 +99,14 @@ int Player::Update(void)
 			m_dwSupertime = GetTickCount();
 			dynamic_cast<CStage01*>(CSceneMgr::Get_Instance()->Get_CScene())->Set_Scroll(DEFAULT_SPEED);
 			m_eNextState = PLAYER_RUN;
-	
+
 			m_bBooster = false;
 		}
 	}
 	if (m_bBig)
 	{
 		m_eNextState = PLAYER_BIG;
+		m_bSuper = true;
 		if (m_dwBig + 3000 < GetTickCount())
 		{
 			CSoundMgr::Get_Instance()->PlaySound(L"거인끝.wav", SOUND_PLAYER, CObj::g_fSound);
@@ -137,37 +146,86 @@ void Player::Late_Update(void)
 		}
 		else
 		{
-			if (CollisionMgr::Collision_Rect(temp, this))
+			for (auto& iter : temp)
 			{
-				switch ((MAPID)i)
+				if (CollisionMgr::Collision_Rect(iter, this))
 				{
-				case MAP_OBSTACLE:
-					break;
-				case MAP_COIN:
-				
-					break;
-				case MAP_JELLY:
-					CSoundMgr::Get_Instance()->PlaySound(L"Jelly.wav", SOUND_JELLY, CObj::g_fSound);
-					break;
-				case MAP_ITEM:
-				{
+					int iMoney = iter->Get_Money();
+					int iScore = iter->Get_Score() * 50;
+					INMAP eID = iter->Get_INID();
+					switch ((INMAP)eID)
+					{
+					case OBSTACLE:
+						CSoundMgr::Get_Instance()->PlaySound(L"냐옹.wav", SOUND_EFFECT, CObj::g_fSound);
+						iter->Set_Dead();
+						if (false == m_bSuper)
+						{
+							Set_Hp(-1);
+							Set_Status(PLAYER_HIT);
+						}
+						break;
 
-					CSoundMgr::Get_Instance()->PlaySound(L"KingCoin.wav", SOUND_COIN, CObj::g_fSound);
-					float fX = temp.front()->Get_MapInfo()->tPoint.fX;
-					float fY = temp.front()->Get_MapInfo()->tPoint.fY;
-				}
-				break;
-				case MAP_END:
-				default:
+					case OTTE:
+						CSoundMgr::Get_Instance()->PlaySound(L"파박.wav", SOUND_EFFECT, CObj::g_fSound);
+						iter->Set_Dead();
+						if (false == m_bSuper)
+						{
+							Set_Hp(-1);
+							Set_Status(PLAYER_HIT);
+						}
+						break;
+					case COIN_SS: case COIN_GS:
+						Set_Money(iMoney);
+						Set_Score(iScore);
+						iter->Set_Dead();
+						CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+						CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_COIN, CObj::g_fSound);
+						break;
+
+					case COIN_SB: case COIN_GB:
+						Set_Money(iMoney);
+						Set_Score(iScore);
+						iter->Set_Dead();
+						CSoundMgr::Get_Instance()->PlaySound(L"Coin.wav", SOUND_EFFECT, CObj::g_fSound);
+						CSoundMgr::Get_Instance()->PlaySound(L"KingCoin.wav", SOUND_COIN, CObj::g_fSound);
+						break;
+					case JELLY:
+						Set_Money(iMoney);
+						Set_Score(iScore);
+						iter->Set_Dead();
+						CSoundMgr::Get_Instance()->PlaySound(L"Jelly.wav", SOUND_JELLY, CObj::g_fSound);
+						break;
+					case BOOSTER:
+					{
+						iter->Set_Dead();
+						CSoundMgr::Get_Instance()->PlaySound(L"아이템.wav", SOUND_EFFECT, CObj::g_fSound);
+						float fX = temp.front()->Get_MapInfo()->tPoint.fX;
+						float fY = temp.front()->Get_MapInfo()->tPoint.fY;
+						Set_Booster();
+					}
 					break;
+					case BIG:
+						Set_Big();
+						CSoundMgr::Get_Instance()->PlaySound(L"아이템.wav", SOUND_EFFECT, CObj::g_fSound);
+						iter->Set_Dead();
+					case MAGNET:
+						CSoundMgr::Get_Instance()->PlaySound(L"아이템.wav", SOUND_EFFECT, CObj::g_fSound);
+						dynamic_cast<CPet*>(CObjMgr::Get_Instance()->Get_Obj(OBJ_PET).front())->Set_Magnet();
+						CMapMgr::Get_Instance()->Set_Magnet(true);
+						iter->Set_Dead();
+						break;
+					default:
+						break;
+					}
 				}
 			}
+
 		}
 	}
 
 	if (m_dwRunning + 1000 < GetTickCount()) //10초마다 피 깎기
 	{
-		m_iHp -= 10;
+		m_iHp -= 3;
 		m_dwRunning = GetTickCount(); //안해주면 계속 피깎여
 	}
 
@@ -183,7 +241,7 @@ void Player::Late_Update(void)
 				m_eNextState = PLAYER_RUN;
 			}
 			if (m_dwHit + 1000 < GetTickCount())
-				m_bSuper = false; 
+				m_bSuper = false;
 
 		}
 	}
@@ -201,7 +259,7 @@ void Player::Render(HDC hDC)
 	{
 		GdiTransparentBlt(hDC,
 			int(m_tInfo.fX - m_tInfo.fCX),//복사 받을 위치 좌표
-			int(m_tInfo.fY - m_tInfo.fCY*1.5),
+			int(m_tInfo.fY - m_tInfo.fCY * 1.5),
 			(int)m_tInfo.fCX * 2, //복사 받을 가로 길이
 			(int)m_tInfo.fCY * 2,
 			hMemDC,
@@ -224,9 +282,9 @@ void Player::Render(HDC hDC)
 		//GdiTransparentBlt(AlphaDC, 0, 0, (int)m_tInfo.fCX, (int)m_tInfo.fCY,
 		//	hDC,0,0,
 		//	int(m_tInfo.fCX), int(m_tInfo.fCY), ASHBLUE);
-		
+
 		GdiTransparentBlt(hDC,
-			int(m_tInfo.fX - m_tInfo.fCX*0.5),//복사 받을 위치 좌표
+			int(m_tInfo.fX - m_tInfo.fCX * 0.5),//복사 받을 위치 좌표
 			int(m_tInfo.fY - m_tInfo.fCY * 0.5),
 			m_tInfo.fCX, //복사 받을 가로 길이
 			m_tInfo.fCY,
@@ -259,7 +317,7 @@ void Player::Render(HDC hDC)
 		//	ASHBLUE);
 
 	}
-		
+
 
 	//AlphaBlend(hDC, m_tRect.left, m_tRect.top, m_tInfo.fCX, m_tInfo.fCY,
 	//	AlphaDC,
@@ -296,6 +354,7 @@ void Player::Key_Check()
 		if (m_eCurState != PLAYER_BOOSTER)
 			if (CKeyMgr::Get_Instance()->Key_Pressing(VK_DOWN))
 			{
+				CSoundMgr::Get_Instance()->PlaySound(L"슬라이드.wav", SOUND_PLAYER, g_fSound);
 				m_eNextState = PLAYER_SLIDE;
 			}
 
@@ -386,7 +445,8 @@ bool Player::Jump(void)
 			{
 				if (CKeyMgr::Get_Instance()->Key_Down(KEY_SPACE)) //hani스페이스바 이전에 호출x 지금호출o ??
 				{
-					CSoundMgr::Get_Instance()->PlaySound(L"PanCake_Jump.wav", SOUND_EFFECT, g_fSound);
+					if(!(lstrcmp(L"Player_Run",m_pFrameKey))) //팬케이크맛 쿠키일때
+					CSoundMgr::Get_Instance()->PlaySound(L"에헷.wav", SOUND_PLAYER, g_fSound);
 
 					m_fStartY = m_tInfo.fY;
 					m_bDoJump = true;
@@ -399,6 +459,7 @@ bool Player::Jump(void)
 		{							// 이러면 점프 두 번 눌러야 일단 점프 한 번 하는게 아닌가... 
 			if (CKeyMgr::Get_Instance()->Key_Down(KEY_SPACE))
 			{
+				if (!(lstrcmp(L"Player_Run", m_pFrameKey))) //팬케이크맛 쿠키일때
 				CSoundMgr::Get_Instance()->PlaySound(L"PanCake_Jump.wav", SOUND_EFFECT, g_fSound);
 
 				m_fStartY = m_tInfo.fY;
@@ -408,7 +469,7 @@ bool Player::Jump(void)
 			}
 		}
 	}
-	
+
 	m_fJumpTime += 0.2f;
 
 	if (m_bDoJump) // 더블점프
@@ -426,7 +487,7 @@ bool Player::Jump(void)
 			//for()
 	else if (m_bJump) // 일단점프
 	{
-		
+
 		//m_fHeight = 2 * (m_fJumpTime * m_fJumpTime * -9.8 * 0.5) + (m_fJumpTime * m_fSpeed);
 		//m_tInfo.fY = -m_fHeight + m_fStartY;
 		//m_tInfo.fY -= m_fJumpPower * m_fJumpTime - (4.8f * m_fJumpTime * m_fJumpTime) * 0.5f;
@@ -476,49 +537,43 @@ void Player::Animation_Change()
 	{
 		switch (m_eNextState) {
 		case PLAYER_RUN:PLAYER_BIG:
-			m_pFrameKey = L"Player_Run";
-			m_tFrame.iFrameStart = 0;//가로 시작
-			m_tFrame.iFrameEnd = 3; //가로 끝
-			m_tFrame.iFrameAnimation = 0;//세로 시작 위치
-			m_tFrame.dwSpeed = 100; //낮을 수록 빠름
-			break;
+		m_pFrameKey = L"Player_Run";
+		m_tFrame.iFrameStart = 0;//가로 시작
+		m_tFrame.iFrameEnd = 3; //가로 끝
+		m_tFrame.iFrameAnimation = 0;//세로 시작 위치
+		m_tFrame.dwSpeed = 100; //낮을 수록 빠름
+		break;
 		case PLAYER_JUMP:
-			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 4;
 			m_tFrame.iFrameAnimation = 1;
 			m_tFrame.dwSpeed = 200;
 			break;
 		case PLAYER_DOUBLEJUMP:
-			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 6;
 			m_tFrame.iFrameAnimation = 2;
 			m_tFrame.dwSpeed = 100;
 			break;
 		case PLAYER_HIT:
-			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 1;
 			m_tFrame.iFrameAnimation = 3;
 			m_tFrame.dwSpeed = 300;
 			break;
 		case PLAYER_DIE:
-			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 4;
 			m_tFrame.iFrameAnimation = 3;
 			m_tFrame.dwSpeed = 200;
 			break;
 		case PLAYER_DEAD:
-			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 3;
 			m_tFrame.iFrameEnd = 4;
 			m_tFrame.iFrameAnimation = 3;
 			m_tFrame.dwSpeed = 200;
 			break;
 		case PLAYER_SLIDE:
-			m_pFrameKey = L"Player_Run";
 			m_tFrame.iFrameStart = 0;
 			m_tFrame.iFrameEnd = 1;
 			m_tFrame.iFrameAnimation = 4;

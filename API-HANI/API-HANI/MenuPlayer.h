@@ -8,6 +8,7 @@ class MenuPlayer :
 {
 public:
     MenuPlayer();
+    MenuPlayer(TCHAR* pFrameKey, FRAME tFrame, float fX, float fY);
     virtual ~MenuPlayer();
 
 public:
@@ -18,6 +19,8 @@ public:
     virtual void Release(void) override;
 
 
+public:
+   
 public:
 
     MENUID              m_eCurState;

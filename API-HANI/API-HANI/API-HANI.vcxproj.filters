@@ -106,6 +106,9 @@
     <Filter Include="98. Manager\01. ObjMgr">
       <UniqueIdentifier>{b66ec3ef-8926-48d3-b0d3-48cf287f57d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Scene\03. Ending">
+      <UniqueIdentifier>{e45a2a73-da4a-47de-a322-d5922c7a0da7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -246,6 +249,9 @@
     <ClInclude Include="MidBlock.h">
       <Filter>01. Object\01. Map\01. Block</Filter>
     </ClInclude>
+    <ClInclude Include="Ending.h">
+      <Filter>02. Scene\03. Ending</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -358,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="MidBlock.cpp">
       <Filter>01. Object\01. Map\01. Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Ending.cpp">
+      <Filter>02. Scene\03. Ending</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

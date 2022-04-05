@@ -19,6 +19,7 @@ public:
 	}
 	CObj*		Get_Target(OBJID eID, CObj* pObj);
 	list<CMaps*> Get_Map(MAPID id) { return m_MapList[id]; }
+	list<CObj*> Get_Obj(OBJID eID) { return m_ObjList[eID]; }
 
 public:
 	void		AddObject(OBJID eID, CObj* pObj);

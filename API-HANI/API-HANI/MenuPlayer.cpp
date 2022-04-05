@@ -3,10 +3,17 @@
 #include "SceneMgr.h"
 #include "BmpMgr.h"
 #include "SoundMgr.h"
-#include "SoundMgr.h"
 
 MenuPlayer::MenuPlayer()
 {
+}
+
+MenuPlayer::MenuPlayer(TCHAR* pFrameKey, FRAME tFrame, float fX, float fY)
+{
+	m_pFrameKey = pFrameKey; 
+	m_tFrame = tFrame; 
+	m_tInfo.fX = fX;
+	m_tInfo.fY = fY;
 }
 
 MenuPlayer::~MenuPlayer()
@@ -15,7 +22,7 @@ MenuPlayer::~MenuPlayer()
 
 void MenuPlayer::Initialize(void)
 {
-	m_pFrameKey = L"Pancake";
+	/*m_pFrameKey = L"Pancake";*/
 	m_eCurState = MENU_IDLE;
 	m_eNextState = MENU_IDLE;
 
@@ -48,9 +55,9 @@ void MenuPlayer::Late_Update(void)
 	{
 		if (GetAsyncKeyState(VK_LBUTTON))
 		{
-			if (!(lstrcmp(L"Pancake", m_pFrameKey)))
+			if (!(lstrcmp(L"Pancake", m_pFrameKey))) //팬케이크랑 같으면
 			{
-
+				CSoundMgr::Get_Instance()->PlaySound(L"PanCake_Jump.wav", SOUND_EFFECT, g_fSound);
 				CSceneMgr::Get_Instance()->Set_Scene(SC_STAGE01);
 			}
 
@@ -59,10 +66,13 @@ void MenuPlayer::Late_Update(void)
 
 				//else if (!(lstrcmp(L"Exit", m_pFrameKey)))
 				//	DestroyWindow(g_hWnd);
-
+			if (!(lstrcmp(L"Lilac", m_pFrameKey)))
+			{
+				//라일락 
+			}
 			return;
 		}
-		CSoundMgr::Get_Instance()->PlaySound(L"PanCake_Jump.wav", SOUND_EFFECT, g_fSound);
+		
 
 		m_tFrame.iFrameAnimation = 1;
 	}

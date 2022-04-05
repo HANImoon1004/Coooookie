@@ -9,6 +9,7 @@ class CMaps
 public:
 	CMaps();
 	explicit CMaps(MAPINFO & mapInfo, INMAP eINID);
+	explicit CMaps(MAPINFO& mapInfo, INMAP eINID, CObj* pPet);
 	virtual ~CMaps();
 
 public:
@@ -34,19 +35,22 @@ public:
 	void					Set_PosY(const float fY) { m_tInfo.tPoint.Set_PosY(fY); }
 	void					Set_Dead() { m_bDead = true; }
 	void					Set_Speed(float fScroll) { m_fScroll= fScroll; }
+	void					Set_Magnet(bool bMagnet) { m_bMagnet = bMagnet; }
 
-	virtual int 		Update_();
+	//virtual int 		Update();
 	virtual int		Late_Update(HDC hDC) PURE;
 	virtual void		Update_Rect();
 	virtual void			Move_Frame() PURE;
 	virtual void			Animation_Change() PURE;
 
 public:
+	void					Magnet();
 	virtual int			Update() PURE;
 	virtual void		Render(HDC hDC) PURE;
 
 protected:
-	
+	list<CObj*>					m_pPet;
+	bool						m_bMagnet = false;
 	bool						m_bDead = false;
 	FRAME					m_tFrame;
 	RECT						m_tRect;
@@ -57,7 +61,7 @@ protected:
 
 	int							m_iScore;
 	int							m_iMoney;
-	float						m_fSpeed;
+	float						m_fSpeed = 0;
 	float						m_fScroll = 8.f;
 	float						m_fAngle;
 };

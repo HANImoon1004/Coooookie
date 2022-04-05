@@ -23,12 +23,17 @@ void CMyMenu::Initialize(void)
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Menu/Menu.bmp", L"Menu");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Menu/Button.bmp", L"Button");
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Menu/Pancake.bmp", L"Pancake"); //플레이어
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Menu/Lilac.bmp", L"Lilac"); //플레이어
 	//CObj* pObj = CAbstractFactory<CMyButton>::Create(330.f, 242.f);
 	//pObj->Set_FrameKey(L"Button");
 	//CObjMgr::Get_Instance()->AddObject(OBJ_UI, pObj);
 
 	CObj* pObj = CAbstractFactory<MenuPlayer>::Create(207.f, 220.f);
 	pObj->Set_FrameKey(L"Pancake");
+	CObjMgr::Get_Instance()->AddObject(OBJ_UI, pObj);
+
+	pObj = CAbstractFactory<MenuPlayer>::Create(720.f, 220.f);
+	pObj->Set_FrameKey(L"Lilac");
 	CObjMgr::Get_Instance()->AddObject(OBJ_UI, pObj);
 }
 

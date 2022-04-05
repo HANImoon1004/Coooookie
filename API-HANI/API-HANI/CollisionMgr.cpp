@@ -122,27 +122,27 @@ bool CollisionMgr::Collision_Rect(list<CMaps*> Dest, list<CObj*> Sour) //Que
 	return isColl;
 }
 
-bool CollisionMgr::Collision_Rect(list<CMaps*> Dest, CObj* Sour)
+bool CollisionMgr::Collision_Rect_Ch(CMaps* Dest, CObj* Sour)
 {
 	bool isColl = false;
-	
+	/*
 	for (auto& DestIter : Dest)
-	{
+	{*/
 		float	fX = 0.f, fY = 0.f;
 	
-		if (Check_Rect(DestIter, Sour, &fX, &fY))
+		if (Check_Rect(Dest, Sour, &fX, &fY))
 		{
 			isColl = true;
 			float SfX = Sour->Get_Info().fX;
 			float SfY = Sour->Get_Info().fY;
 	
-			if (Sour->Get_Info().fY < DestIter->Get_MapInfo()->tPoint.fY)
+			if (Sour->Get_Info().fY < Dest->Get_MapInfo()->tPoint.fY)
 			{
 				fY *= -1.f;
 			}
 			Sour->Set_Pos(SfX, SfY + fY);
 		}
-	}
+	//}
 	return isColl;
 
 	return false;
@@ -152,7 +152,7 @@ bool CollisionMgr::Collision_Rect(CMaps* Dest, CObj* Sour)
 {
 	bool isColl = false;
 
-	RECT dest = Dest->Get_Rect();
+ 	RECT dest = Dest->Get_Rect();
 	RECT sour = Sour->Get_Rect();
 
 	if (dest.left <= sour.right && dest.right >= sour.left &&

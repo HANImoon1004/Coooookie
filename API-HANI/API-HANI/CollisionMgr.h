@@ -14,7 +14,7 @@ public:
 
 	static bool Collision_Rect(list<CMaps*> Dest, list<CObj*> Sour);
 
-	static bool Collision_Rect(list<CMaps*> Dest, CObj* Sour);
+	static bool Collision_Rect_Ch(CMaps* Dest, CObj* Sour);
 
 	static bool Collision_Rect(CMaps* Dest, CObj* Sour);
 

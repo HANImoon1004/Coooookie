@@ -6,6 +6,7 @@ class CStage01 :
 {
 public:
 	CStage01();
+	CStage01(TCHAR* pFrameKey);
 	virtual ~CStage01();
 
 public:

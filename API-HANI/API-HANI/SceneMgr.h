@@ -3,7 +3,7 @@
 #include "Logo.h"
 #include "MyMenu.h"
 #include "Stage01.h"
-
+#include "Ending.h"
 
 class CSceneMgr
 {
@@ -14,6 +14,7 @@ private:
 public:
 	SCENEID		Get_SceneID(void) { return m_eCurScene; }
 	CScene* Get_CScene(void) { return m_pScene; }
+	void		Set_PlayerKey(TCHAR* pPlayerKey) { m_PlayerKey = pPlayerKey; }
 
 	void		Set_Scene(SCENEID eScene);
 	void		Update(void);
@@ -46,6 +47,8 @@ private:
 
 	SCENEID						m_eCurScene;		// «ˆ¿Á¿« æ¿ id
 	SCENEID						m_ePreScene;		// ¿Ã¿¸ æ¿ id
+
+	TCHAR*						m_PlayerKey;
 
 };
 

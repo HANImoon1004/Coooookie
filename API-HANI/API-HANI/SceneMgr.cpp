@@ -40,6 +40,10 @@ void CSceneMgr::Set_Scene(SCENEID eScene)
 			m_pScene = new CStage01;
 			break;
 
+		case SC_ENDING:
+			m_pScene = new Ending;
+			break;
+
 			/*	case SC_EDIT:
 				m_pScene = new CMyEdit;
 				break;

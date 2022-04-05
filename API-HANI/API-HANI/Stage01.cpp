@@ -10,10 +10,14 @@
 #include "MapMgr.h"
 #include "SoundMgr.h"
 #include "Effect.h"
-
+#include "SceneMgr.h"
 //#define MAX_COMPUTERNAME_LENGTH 31
 
 CStage01::CStage01()
+{
+}
+
+CStage01::CStage01(TCHAR* pFrameKey)
 {
 }
 
@@ -51,11 +55,20 @@ void CStage01::Initialize(void)
 	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Coin.wav", SOUND_EFFECT, CObj::g_fSound);
 	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/Jelly.wav", SOUND_EFFECT, CObj::g_fSound);
 	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/KingCoin.wav", SOUND_EFFECT, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/슬라이드.wav", SOUND_PLAYER, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/거인끝.wav", SOUND_EFFECT, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/아이템.wav", SOUND_EFFECT, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/에헷.wav", SOUND_PLAYER, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/파박.wav", SOUND_EFFECT, CObj::g_fSound);
+	CSoundMgr::Get_Instance()->PlaySoundW(L"../Sound/냐옹.wav", SOUND_EFFECT, CObj::g_fSound);
+
 
 
 	CObj* pObj = nullptr;
 	
+	//if(pFrameKey)
 	pObj = CAbstractFactory<Player>::Create();
+	pObj = new Player(L"Player_Run");
 	CObjMgr::Get_Instance()->AddObject(OBJ_PLAYER, pObj);
 
 	pObj = CAbstractFactory<CPet>::Create();
@@ -96,7 +109,7 @@ int CStage01::Update(void)
 		pt.x -= (int)CScrollMgr::Get_Instance()->Get_ScrollX();
 		pt.y -= (int)CScrollMgr::Get_Instance()->Get_ScrollY();
 	}
-
+	CMapMgr::Get_Instance()->Update();
 	CObjMgr::Get_Instance()->Update();
 
 	return 0;
@@ -105,6 +118,22 @@ int CStage01::Update(void)
 void CStage01::Late_Update(void)
 {
 	CObjMgr::Get_Instance()->Late_Update(); //위반뜸
+
+	int iScrollX = CScrollMgr::Get_Instance()->Get_ScrollX();
+	if (iScrollX < -11500)
+  		CSceneMgr::Get_Instance()->Set_Scene(SC_ENDING);
+
+	int iY = CObjMgr::Get_Instance()->Get_Player()->Get_Info().fY;
+	if(iY >= 600)
+		CSceneMgr::Get_Instance()->Set_Scene(SC_ENDING);
+
+	bool isDead = CObjMgr::Get_Instance()->Get_Player()->Get_Dead();
+	DWORD dwTime = GetTickCount();
+	if (isDead)
+	{
+		if(dwTime + 500 < GetTickCount())
+		CSceneMgr::Get_Instance()->Set_Scene(SC_ENDING);
+	}
 
 
 }
@@ -172,16 +201,24 @@ void CStage01::Render(HDC hDC)
 	oldFont = (HFONT)SelectObject(hDC, hFont);
 
 	//TextOut(hDC, 300, 300, szComName, lstrlen(szComName)); //단순히 지영하니 뜸
-	wsprintf(szMoney, L"%i 점!", iScore); //세번째 인수는 %s, 2인자를 1인자에 복사해주는 것 같다
-	TextOut(hDC, 810, 20, szMoney, lstrlen(szMoney));
-	//wsprintf(szMoney, L"가진 돈 : %i", iMoney);
-	wsprintf(szScore, L"점수 : %i", iScore);
-	wsprintf(szHp, L"체력 : %i", iHp);
+	wsprintf(szScore, L"%i 점!", iScore); //세번째 인수는 %s, 2인자를 1인자에 복사해주는 것 같다
+	TextOut(hDC, 810, 20, szScore, lstrlen(szScore));
+	
+	wsprintf(szMoney, L"%i 원", iMoney);
+	TextOut(hDC, 810, 40, szMoney, lstrlen(szMoney));
 
-	TextOut(hDC, 0, 100, szMoney, lstrlen(szMoney));
-	TextOut(hDC, 0, 130, szScore, lstrlen(szScore));
-	TextOut(hDC, 0, 160, szHp, lstrlen(szHp));
+	////wsprintf(szMoney, L"가진 돈 : %i", iMoney);
+	//wsprintf(szScore, L"점수 : %i", iScore);
+	//wsprintf(szHp, L"체력 : %i", iHp);
 
+	//TextOut(hDC, 0, 100, szMoney, lstrlen(szMoney));
+	//TextOut(hDC, 0, 130, szScore, lstrlen(szScore));
+	//TextOut(hDC, 0, 160, szHp, lstrlen(szHp));
+
+	//TCHAR szX[32];
+	//float fX = CScrollMgr::Get_Instance()->Get_ScrollX();
+	//wsprintf(szX, L"x : %i", fX);
+	//TextOut(hDC, 810, 60, szX, lstrlen(szX));
 
 }
 

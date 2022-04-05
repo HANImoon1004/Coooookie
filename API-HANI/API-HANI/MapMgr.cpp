@@ -28,6 +28,7 @@ CMapMgr::~CMapMgr()
 
 void CMapMgr::Initialize()
 {
+	//m_pPet = CObjMgr::Get_Instance()->Get_Obj(OBJ_PET);
 }
 
 void CMapMgr::Update()
@@ -37,12 +38,23 @@ void CMapMgr::Update()
 		Load_Map();
 	}*/
 
+	for (int i = MAP_COIN; i < MAP_END; ++i)
+	{
+
+		auto& iter = m_listMap[i].begin();
+
+		for (; iter != m_listMap[i].end();) //0316 QUE hani 
+		{
+			(*iter)->Magnet();
+
+		
+				++iter;
+		}
+
+	}
 	for (int i = 0; i < MAP_END; ++i)
 	{
-		/*for (int j = 0; j < sizeof(m_listMap[i]); ++j)
-		{
-			m_listMap[i].()->Update();
-		}*/
+	
 		auto& iter = m_listMap[i].begin();
 
 		for (; iter != m_listMap[i].end();) //0316 QUE hani 
@@ -192,4 +204,13 @@ void CMapMgr::Load_Map()
 
 //	MessageBox(nullptr, L">>ㅑ 로드 성공!", L"*-클라이언트-*", MB_OK);
 	CloseHandle(hFile);
+}
+
+void CMapMgr::Set_Magnet(bool swit)
+{
+	for (int i = MAP_COIN; i < MAP_END; ++i)
+	{
+		for (auto& iter : m_listMap[i])
+			iter->Set_Magnet(swit);
+	}
 }

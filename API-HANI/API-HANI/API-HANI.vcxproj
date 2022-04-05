@@ -22,13 +22,13 @@
     <ProjectGuid>{E3E9B62B-AD45-4BE0-BAB4-5D18790DA42C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>APIHANI</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -157,6 +157,7 @@
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectMgr.h" />
+    <ClInclude Include="Ending.h" />
     <ClInclude Include="GCoin.h" />
     <ClInclude Include="Jelly.h" />
     <ClInclude Include="KeyMgr.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectMgr.cpp" />
+    <ClCompile Include="Ending.cpp" />
     <ClCompile Include="GCoin.cpp" />
     <ClCompile Include="Jelly.cpp" />
     <ClCompile Include="KeyMgr.cpp" />

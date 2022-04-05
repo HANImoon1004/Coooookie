@@ -73,16 +73,40 @@ int CObjMgr::Update(void)
 
 void CObjMgr::Late_Update(void)
 {
+
 	for (int i = 0; i < OBJ_END; ++i)
 	{
-		for (int j = 0; j < m_ObjList[i].size(); ++j)
-		{
-			CObj* temp = m_ObjList[i].front() + j;
-			if (temp == nullptr) continue;
+		if (i >= m_ObjList->size())
+			continue;
 
-			temp->Late_Update();
+		for (auto& iter : m_ObjList[i])
+		{
+			if (m_ObjList[i].empty())
+				break;
+
+			iter->Late_Update();
+
+		
+
+			RENDERID eID = iter->Get_GroupID();
+			m_RenderSort[eID].push_back(iter);
+
 		}
 	}
+	//for (int i = 0; i < OBJ_END; ++i)
+	//{
+	//	for (int j = 0; j < m_ObjList[i].size(); ++j)
+	//	{
+	//		CObj* temp = m_ObjList[i].front() + j;
+	//		if (temp == nullptr) 
+	//			continue;
+
+	//		if (m_ObjList[i].empty())
+	//			break;
+
+	//		temp->Late_Update();
+	//	}
+	//}
 	//충돌처리
 	
 	//CollisionMgr::Collision_Block(m_MapList[MAP_BLOCK], m_ObjList[OBJ_PLAYER]);
